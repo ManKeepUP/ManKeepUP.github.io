@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next-man.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next-man.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next-man.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -27,7 +27,7 @@
     version: '7.7.1',
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
+    copycode: {"enable":true,"show_result":true,"style":"default"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
@@ -42,20 +42,20 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
-  <meta name="description" content="Nmap这是一篇测试文章！这个是三级标题">
+  <meta name="description" content="Markdown使用手册 《Markdown使用手册》记录了博主在使用Markdown的过程中Get的编写技巧和学习笔记。关于Markdown是什么？由谁设计？这类话题在文中不作介绍，对相关内容感兴趣的朋友可以参看“关于MD”这部分给出的链接进行了解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown用法">
 <meta property="og:url" content="https://mankeepup.github.io/2020/02/08/Nmap%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="ManKeepUP">
-<meta property="og:description" content="Nmap这是一篇测试文章！这个是三级标题">
+<meta property="og:description" content="Markdown使用手册 《Markdown使用手册》记录了博主在使用Markdown的过程中Get的编写技巧和学习笔记。关于Markdown是什么？由谁设计？这类话题在文中不作介绍，对相关内容感兴趣的朋友可以参看“关于MD”这部分给出的链接进行了解。">
 <meta property="article:published_time" content="2020-02-08T04:26:50.000Z">
-<meta property="article:modified_time" content="2020-02-08T09:26:09.514Z">
+<meta property="article:modified_time" content="2020-02-09T10:06:20.294Z">
 <meta property="article:author" content="ManKeepUP">
 <meta property="article:tag" content="导航">
 <meta property="article:tag" content="分享">
@@ -145,6 +145,11 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
 
     <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
@@ -160,9 +165,34 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -208,9 +238,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-08 12:26:50 / 修改时间：17:26:09" itemprop="dateCreated datePublished" datetime="2020-02-08T12:26:50+08:00">2020-02-08</time>
+              <time title="创建时间：2020-02-08 12:26:50" itemprop="dateCreated datePublished" datetime="2020-02-08T12:26:50+08:00">2020-02-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,6 +261,34 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/08/Nmap%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/08/Nmap%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>293</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -242,7 +299,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h1><h2 id="这是一篇测试文章！"><a href="#这是一篇测试文章！" class="headerlink" title="这是一篇测试文章！"></a>这是一篇测试文章！</h2><h3 id="这个是三级标题"><a href="#这个是三级标题" class="headerlink" title="这个是三级标题"></a>这个是三级标题</h3><a id="more"></a>
+        <h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><blockquote>
+<p>《Markdown使用手册》记录了博主在使用Markdown的过程中Get的编写技巧和学习笔记。关于Markdown是什么？由谁设计？这类话题在文中不作介绍，对相关内容感兴趣的朋友可以参看“关于MD”这部分给出的链接进行了解。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-Markdown样式"><a href="#1-Markdown样式" class="headerlink" title="1.Markdown样式"></a>1.Markdown样式</h2><!-- more -->
 <ul>
 <li>列表1</li>
 <li>列表2<br>a 子列表<br>b 子列表  </li>
@@ -259,8 +320,10 @@
     
     
     
+      
+
         <div class="reward-container">
-  <div>谢谢您的支持！</div>
+  <div>您赞赏的姿势风流倜傥~</div>
   <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
     打赏
   </button>
@@ -279,25 +342,6 @@
   </div>
 </div>
 
-        
-
-  <div class="followme">
-    <p>欢迎关注我的其它发布渠道</p>
-
-    <div class="social-list">
-
-            <div class="social-item">
-              <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
-                <span class="icon">
-                  <i class="fa fa-wechat"></i>
-                </span>
-
-                <span class="label">Wechat</span>
-              </a>
-            </div>
-    </div>
-  </div>
-
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -314,7 +358,10 @@
     <a href="/2020/02/05/hello-world/" rel="prev" title="Hello World">
       <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/09/ManKeepUP-BLOG%E5%A7%8B%E6%9C%AB/" rel="next" title="ManKeepUP-BLOG始末">
+      ManKeepUP-BLOG始末 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -328,6 +375,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -374,7 +422,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nmap"><span class="nav-number">1.</span> <span class="nav-text">Nmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#这是一篇测试文章！"><span class="nav-number">1.1.</span> <span class="nav-text">这是一篇测试文章！</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#这个是三级标题"><span class="nav-number">1.1.1.</span> <span class="nav-text">这个是三级标题</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown使用手册"><span class="nav-number">1.</span> <span class="nav-text">Markdown使用手册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Markdown样式"><span class="nav-number">1.1.</span> <span class="nav-text">1.Markdown样式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -390,7 +438,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -403,7 +451,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -430,6 +478,9 @@
         <li class="links-of-blogroll-item">
           <a href="https://www.shentoushi.top/" title="https:&#x2F;&#x2F;www.shentoushi.top&#x2F;" rel="noopener" target="_blank">Shentop</a>
         </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://bestzuo.cn/" title="https:&#x2F;&#x2F;bestzuo.cn&#x2F;" rel="noopener" target="_blank">bestzuo</a>
+        </li>
     </ul>
   </div>
 
@@ -452,9 +503,19 @@
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ManKeepUP</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1 分钟</span>
 </div>
 
         
@@ -513,6 +574,10 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -527,6 +592,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'jSqAJQbhegRLySU960tq0M0g-gzGzoHsz',
+      appKey: 'rOL85otGorHqBVxp5zniPmvk',
+      placeholder: "Just go go",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>

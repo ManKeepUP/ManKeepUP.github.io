@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ManKeepUP-BLOG始末</title>
+    <url>/2020/02/09/ManKeepUP-BLOG%E5%A7%8B%E6%9C%AB/</url>
+    <content><![CDATA[<h1 id="ManKeepUP-BLOG始末"><a href="#ManKeepUP-BLOG始末" class="headerlink" title="ManKeepUP-BLOG始末"></a>ManKeepUP-BLOG始末</h1><p><a href="https://github.com/Drew233/hexo-generator-random记得看" target="_blank" rel="noopener">https://github.com/Drew233/hexo-generator-random记得看</a></p>
+]]></content>
+      <tags>
+        <tag>关于</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown用法</title>
     <url>/2020/02/08/Nmap%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h1><h2 id="这是一篇测试文章！"><a href="#这是一篇测试文章！" class="headerlink" title="这是一篇测试文章！"></a>这是一篇测试文章！</h2><h3 id="这个是三级标题"><a href="#这个是三级标题" class="headerlink" title="这个是三级标题"></a>这个是三级标题</h3><a id="more"></a>
+    <content><![CDATA[<h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><blockquote>
+<p>《Markdown使用手册》记录了博主在使用Markdown的过程中Get的编写技巧和学习笔记。关于Markdown是什么？由谁设计？这类话题在文中不作介绍，对相关内容感兴趣的朋友可以参看“关于MD”这部分给出的链接进行了解。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-Markdown样式"><a href="#1-Markdown样式" class="headerlink" title="1.Markdown样式"></a>1.Markdown样式</h2><!-- more -->
 <ul>
 <li>列表1</li>
 <li>列表2<br>a 子列表<br>b 子列表  </li>
@@ -27,6 +40,7 @@
     <title>Hello World</title>
     <url>/2020/02/05/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<a id="more"></a>
 <h2 id="hello-Hexo"><a href="#hello-Hexo" class="headerlink" title="hello Hexo"></a>hello Hexo</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
