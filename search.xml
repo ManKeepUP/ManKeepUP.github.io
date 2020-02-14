@@ -1,22 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JDBC基础</title>
+    <url>/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p>从这里开始了解JDBC…</p>
+</blockquote>
+<a id="more"></a>
+<div class="note primary">
+            <p>笔记的相关内容来自于B站的<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL2F2NTkyNjM4NjAvP3NwbV9pZF9mcm9tPTMzMy43ODguYl82MzZmNmQ2ZDY1NmU3NC4zNA==" title="https://www.bilibili.com/video/av59263860/?spm_id_from=333.788.b_636f6d6d656e74.34">JDBC教程<i class="fa fa-external-link"></i></span></p>
+          </div>
+<h1 id="1-JDBC是什么？"><a href="#1-JDBC是什么？" class="headerlink" title="1.JDBC是什么？"></a>1.JDBC是什么？</h1><p>&emsp;&emsp;JDBC全称Java DataBase Connectivity(即Java语言连接数据库)。JDBC的本质是SUN公司制定的一套接口(interface)，JDBC属于<mark>java.sql.*;</mark>这个软件包下还有很多其他接口。每一个接口都有<mark>调用者和实现者</mark>。面向接口调用，面向接口写实现类，这些都属于面向接口编程。<br><div class="note info">
+            <p>为什么要面向接口编程？</p>
+          </div></p>
+<blockquote>
+<p><strong>解耦合</strong>：降低程序的耦合度，提高程序的扩展力；</p>
+</blockquote>
+<div class="note info">
+            <p>多态机制</p>
+          </div>  
+<p>&emsp;&emsp;多态机制就是非常典型的面向抽象编程，见下，其中Animal是抽象类，而Dog和Cat是具体的对象，由Animal这个抽象的父类可以衍生出各种不同形态的子类(对象)，于是，“多态”的概念可以窥见一斑；</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">建议：  </span><br><span class="line"><span class="addition">+ Animal a = new Cat();  </span></span><br><span class="line"><span class="addition">+ Animal d = new Dog();</span></span><br><span class="line"><span class="addition">+ public void feed(Animal a)//(面向父类型编程)  </span></span><br><span class="line"><span class="addition">+   </span></span><br><span class="line"><span class="addition">+      </span></span><br><span class="line">不建议：  </span><br><span class="line"><span class="deletion">- Dog d = new Dog();  </span></span><br><span class="line"><span class="deletion">- Cat t = new Cat();</span></span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>为什么SUN公司要指定一套JDBC接口？</p>
+          </div>
+<p>&emsp;&emsp;因为每一个数据库的底层实现原理都不同，如Orcal,MySQL,MS Sqlsever等数据库都有自己的实现原理，这样我们就不用关心接口底下的实现方式，而SUN公司只要定义好这样一个连接数据的接口即可，这大大减小了程序员的工作量。<br><pre class="mermaid" style="text-align: center;">
+            graph LR
+            47(SAM.CommonFA.FMESummary)-->48(SAM.CommonFA.CommonFAFinanceBudget)
+37(SAM.CommonFA.BudgetSubserviceLineVolume)-->48(SAM.CommonFA.CommonFAFinanceBudget)
+35(SAM.CommonFA.PopulationFME)-->47(SAM.CommonFA.FMESummary)
+41(SAM.CommonFA.MetricCost)-->47(SAM.CommonFA.FMESummary)
+44(SAM.CommonFA.MetricOutliers)-->47(SAM.CommonFA.FMESummary)
+46(SAM.CommonFA.MetricOpportunity)-->47(SAM.CommonFA.FMESummary)
+40(SAM.CommonFA.OPVisits)-->47(SAM.CommonFA.FMESummary)
+38(SAM.CommonFA.CommonFAFinanceRefund)-->47(SAM.CommonFA.FMESummary)
+43(SAM.CommonFA.CommonFAFinancePicuDays)-->47(SAM.CommonFA.FMESummary)
+42(SAM.CommonFA.CommonFAFinanceNurseryDays)-->47(SAM.CommonFA.FMESummary)
+45(SAM.CommonFA.MetricPreOpportunity)-->46(SAM.CommonFA.MetricOpportunity)
+35(SAM.CommonFA.PopulationFME)-->45(SAM.CommonFA.MetricPreOpportunity)
+41(SAM.CommonFA.MetricCost)-->45(SAM.CommonFA.MetricPreOpportunity)
+41(SAM.CommonFA.MetricCost)-->44(SAM.CommonFA.MetricOutliers)
+39(SAM.CommonFA.ChargeDetails)-->43(SAM.CommonFA.CommonFAFinancePicuDays)
+39(SAM.CommonFA.ChargeDetails)-->42(SAM.CommonFA.CommonFAFinanceNurseryDays)
+39(SAM.CommonFA.ChargeDetails)-->41(SAM.CommonFA.MetricCost)
+39(SAM.CommonFA.ChargeDetails)-->40(SAM.CommonFA.OPVisits)
+35(SAM.CommonFA.PopulationFME)-->39(SAM.CommonFA.ChargeDetails)
+36(SAM.CommonFA.PremetricCost)-->39(SAM.CommonFA.ChargeDetails)
+          </pre></p>
+]]></content>
+      <categories>
+        <category>Java&#39;s Everything</category>
+      </categories>
+      <tags>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java环境</title>
+    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<blockquote>
+<p>Java开发环境的搭建过程…</p>
+</blockquote>
+<a id="more"></a>
+<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
+<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
+      <categories>
+        <category>Java&#39;s Everything</category>
+      </categories>
+      <tags>
+        <tag>Java环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2月13日-作业</title>
+    <url>/2020/02/13/Rainman-Homework/%E9%9B%A8%E4%BA%BA-%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>作业</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2月13日-日报</title>
+    <url>/2020/02/13/Rainman-Daily-Report/%E9%9B%A8%E4%BA%BA-%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>日报</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ManKeepUP-BLOG始末</title>
     <url>/2020/02/09/ManKeepUP-BLOG%E5%A7%8B%E6%9C%AB/</url>
-    <content><![CDATA[<h1 id="ManKeepUP-BLOG始末"><a href="#ManKeepUP-BLOG始末" class="headerlink" title="ManKeepUP-BLOG始末"></a>ManKeepUP-BLOG始末</h1><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RyZXcyMzMvaGV4by1nZW5lcmF0b3ItcmFuZG9t6K6w5b6X55yL" title="https://github.com/Drew233/hexo-generator-random记得看">https://github.com/Drew233/hexo-generator-random记得看<i class="fa fa-external-link"></i></span></p>
+    <content><![CDATA[<blockquote>
+<p>关于博客的一切…</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="来了老弟"><a href="#来了老弟" class="headerlink" title="来了老弟"></a>来了老弟</h1><p>&emsp;&emsp;出于不满，我一直在思考如何让自己的博客像浏览过的一些优秀“博客”站一样,温暖丰富，充实强大，重要的是能够进行高度定制化，将博客打造成自己的互联网“小窝”。(For Example:<span class="exturl" data-url="aHR0cHM6Ly9iZXN0enVvLmNuLw==" title="https://bestzuo.cn/">Sanarous<i class="fa fa-external-link"></i></span>)偶然中的必然，当下我正处于“无脑大学生”的状态，看到了hexo,hugo等一些部署静态网站的工具，但我几乎没有区分这些工具之间不同，选择hexo是因为自己使用过github，而它是用github pages来做的，所以相对熟悉一些，选择NexT主题是因为学的那个教程里用的这个，而我当时试了另外一个主题好像没有成功，加上我英文水平太菜，难以耐着性子去看长篇的文档，就这样，hexo+NexT的个人定制化博客的路程开始了！(AoLiGei~)  </p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RyZXcyMzMvaGV4by1nZW5lcmF0b3ItcmFuZG9t" title="https://github.com/Drew233/hexo-generator-random">https://github.com/Drew233/hexo-generator-random<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
-        <tag>关于</tag>
+        <tag>Blog</tag>
       </tags>
   </entry>
   <entry>
     <title>Markdown用法</title>
-    <url>/2020/02/08/Nmap%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><blockquote>
-<p>《Markdown使用手册》记录了博主在使用Markdown的过程中Get的编写技巧和学习笔记。关于Markdown是什么？由谁设计？这类话题在文中不作介绍，对相关内容感兴趣的朋友可以参看“关于MD”这部分给出的链接进行了解。</p>
+    <url>/2020/02/08/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<blockquote>
+<p>从这里快速入手Markdown…</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="1-Markdown样式"><a href="#1-Markdown样式" class="headerlink" title="1.Markdown样式"></a>1.Markdown样式</h2><!-- more -->
+<div class="note primary">
+            <p>欢迎阅读！Markdown同Next主题一样——强大高效，简单干净。本文将梳理Markdown中常见的语法，让你迅速用Markdown进行创作。Let’s Go!</p>
+          </div>
+<h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><h2 id="Markdown样式"><a href="#Markdown样式" class="headerlink" title="Markdown样式"></a>Markdown样式</h2><h2 id="代码块设置"><a href="#代码块设置" class="headerlink" title="代码块设置"></a>代码块设置</h2><p>&emsp;&emsp;想在文件中嵌入代码，只需要用三个’`’符号一上一下将代码包含在内，你可以在’```’符号可以自行再做进一步的设置，如language,url,title等等。</p>
 <ul>
 <li>列表1</li>
 <li>列表2<br>a 子列表<br>b 子列表  </li>
@@ -28,18 +123,18 @@
 <p>引用</p>
 </blockquote>
 ]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
       <tags>
-        <tag>导航</tag>
-        <tag>分享</tag>
+        <tag>-Markdown</tag>
       </tags>
   </entry>
   <entry>
     <title>Official Guidance Document</title>
     <url>/2020/02/05/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvLw==" title="https://hexo.io/">Hexo<i class="fa fa-external-link"></i></span>! This is your very first post. Check <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv" title="https://hexo.io/docs/">documentation<i class="fa fa-external-link"></i></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=" title="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fa fa-external-link"></i></span> or you can ask me on <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==" title="https://github.com/hexojs/hexo/issues">GitHub<i class="fa fa-external-link"></i></span>.<br><a id="more"></a></p>
+    <content><![CDATA[<blockquote>
+<p>官方自带介绍文件…</p>
+</blockquote>
+<a id="more"></a>
+<p>Welcome to <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvLw==" title="https://hexo.io/">Hexo<i class="fa fa-external-link"></i></span>! This is your very first post. Check <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv" title="https://hexo.io/docs/">documentation<i class="fa fa-external-link"></i></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=" title="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fa fa-external-link"></i></span> or you can ask me on <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==" title="https://github.com/hexojs/hexo/issues">GitHub<i class="fa fa-external-link"></i></span>.</p>
 <h1 id="one"><a href="#one" class="headerlink" title="one"></a>one</h1><h2 id="hello-Hexo-this-is-a-amazing-passages-look-this-one"><a href="#hello-Hexo-this-is-a-amazing-passages-look-this-one" class="headerlink" title="hello Hexo this is a amazing passages! look this one!"></a>hello Hexo this is a amazing passages! look this one!</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s" title="https://hexo.io/docs/writing.html">Writing<i class="fa fa-external-link"></i></span></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -48,9 +143,6 @@
 <p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s" title="https://hexo.io/docs/generating.html">Generating<i class="fa fa-external-link"></i></span></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s" title="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fa fa-external-link"></i></span></p>
-<script type="math/tex; mode=display">\begin{equation} \label{eq1}
-e=mc^2
-\end{equation}</script><p>The famous matter-energy equation $\eqref{eq1}$ proposed by Einstein…</p>
 ]]></content>
   </entry>
 </search>
