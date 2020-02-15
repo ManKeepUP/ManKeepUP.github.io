@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java环境</title>
+    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<blockquote>
+<p>Java开发环境的搭建过程…</p>
+</blockquote>
+<a id="more"></a>
+<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
+<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
+      <categories>
+        <category>Java&#39;s Everything</category>
+      </categories>
+      <tags>
+        <tag>Java环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JDBC基础</title>
     <url>/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<blockquote>
@@ -19,56 +35,18 @@
 <div class="note info">
             <p>多态机制</p>
           </div>  
-<p>&emsp;&emsp;多态机制就是非常典型的面向抽象编程，见下，其中Animal是抽象类，而Dog和Cat是具体的对象，由Animal这个抽象的父类可以衍生出各种不同形态的子类(对象)，于是，“多态”的概念可以窥见一斑；</p>
+<p>&emsp;&emsp;多态机制就是非常典型的面向抽象编程，举例如下，其中Animal是抽象类，而Dog和Cat是具体的对象，由Animal这个抽象的父类可以衍生出各种不同形态的子类(对象)，于是，“多态”的概念可以窥见一斑；</p>
 <figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">建议：  </span><br><span class="line"><span class="addition">+ Animal a = new Cat();  </span></span><br><span class="line"><span class="addition">+ Animal d = new Dog();</span></span><br><span class="line"><span class="addition">+ public void feed(Animal a)//(面向父类型编程)  </span></span><br><span class="line"><span class="addition">+   </span></span><br><span class="line"><span class="addition">+      </span></span><br><span class="line">不建议：  </span><br><span class="line"><span class="deletion">- Dog d = new Dog();  </span></span><br><span class="line"><span class="deletion">- Cat t = new Cat();</span></span><br></pre></td></tr></table></figure>
 <div class="note info">
             <p>为什么SUN公司要指定一套JDBC接口？</p>
           </div>
-<p>&emsp;&emsp;因为每一个数据库的底层实现原理都不同，如Orcal,MySQL,MS Sqlsever等数据库都有自己的实现原理，这样我们就不用关心接口底下的实现方式，而SUN公司只要定义好这样一个连接数据的接口即可，这大大减小了程序员的工作量。<br><pre class="mermaid" style="text-align: center;">
-            graph LR
-            47(SAM.CommonFA.FMESummary)-->48(SAM.CommonFA.CommonFAFinanceBudget)
-37(SAM.CommonFA.BudgetSubserviceLineVolume)-->48(SAM.CommonFA.CommonFAFinanceBudget)
-35(SAM.CommonFA.PopulationFME)-->47(SAM.CommonFA.FMESummary)
-41(SAM.CommonFA.MetricCost)-->47(SAM.CommonFA.FMESummary)
-44(SAM.CommonFA.MetricOutliers)-->47(SAM.CommonFA.FMESummary)
-46(SAM.CommonFA.MetricOpportunity)-->47(SAM.CommonFA.FMESummary)
-40(SAM.CommonFA.OPVisits)-->47(SAM.CommonFA.FMESummary)
-38(SAM.CommonFA.CommonFAFinanceRefund)-->47(SAM.CommonFA.FMESummary)
-43(SAM.CommonFA.CommonFAFinancePicuDays)-->47(SAM.CommonFA.FMESummary)
-42(SAM.CommonFA.CommonFAFinanceNurseryDays)-->47(SAM.CommonFA.FMESummary)
-45(SAM.CommonFA.MetricPreOpportunity)-->46(SAM.CommonFA.MetricOpportunity)
-35(SAM.CommonFA.PopulationFME)-->45(SAM.CommonFA.MetricPreOpportunity)
-41(SAM.CommonFA.MetricCost)-->45(SAM.CommonFA.MetricPreOpportunity)
-41(SAM.CommonFA.MetricCost)-->44(SAM.CommonFA.MetricOutliers)
-39(SAM.CommonFA.ChargeDetails)-->43(SAM.CommonFA.CommonFAFinancePicuDays)
-39(SAM.CommonFA.ChargeDetails)-->42(SAM.CommonFA.CommonFAFinanceNurseryDays)
-39(SAM.CommonFA.ChargeDetails)-->41(SAM.CommonFA.MetricCost)
-39(SAM.CommonFA.ChargeDetails)-->40(SAM.CommonFA.OPVisits)
-35(SAM.CommonFA.PopulationFME)-->39(SAM.CommonFA.ChargeDetails)
-36(SAM.CommonFA.PremetricCost)-->39(SAM.CommonFA.ChargeDetails)
-          </pre></p>
+<p>&emsp;&emsp;因为每一个数据库的底层实现原理都不同，如Orcal,MySQL,MS Sqlsever等数据库都有自己的实现原理，通过接口我们可以调用任何一个数据库来使用，而不用关心接口底下的实现方式。因此，SUN公司定义好这样一个连接数据的接口后，大大减小了程序员的工作量。</p>
 ]]></content>
       <categories>
         <category>Java&#39;s Everything</category>
       </categories>
       <tags>
         <tag>JDBC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java环境</title>
-    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<blockquote>
-<p>Java开发环境的搭建过程…</p>
-</blockquote>
-<a id="more"></a>
-<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
-<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
-      <categories>
-        <category>Java&#39;s Everything</category>
-      </categories>
-      <tags>
-        <tag>Java环境搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -111,7 +89,8 @@
 <div class="note primary">
             <p>欢迎阅读！Markdown同Next主题一样——强大高效，简单干净。本文将梳理Markdown中常见的语法，让你迅速用Markdown进行创作。Let’s Go!</p>
           </div>
-<h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><h2 id="Markdown样式"><a href="#Markdown样式" class="headerlink" title="Markdown样式"></a>Markdown样式</h2><h2 id="代码块设置"><a href="#代码块设置" class="headerlink" title="代码块设置"></a>代码块设置</h2><p>&emsp;&emsp;想在文件中嵌入代码，只需要用三个’`’符号一上一下将代码包含在内，你可以在’```’符号可以自行再做进一步的设置，如language,url,title等等。</p>
+<h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><h2 id="Markdown样式"><a href="#Markdown样式" class="headerlink" title="Markdown样式"></a>Markdown样式</h2><h2 id="代码块设置"><a href="#代码块设置" class="headerlink" title="代码块设置"></a>代码块设置</h2><p>&emsp;&emsp;想在文件中嵌入代码，只需要用三个‘`’符号(位于tab键上方)一上一下将代码包含在内，你可以在‘```’符号后再做进一步的设置，如language,url,title等等。   </p>
+<h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><p>&emsp;&emsp;NexT允许用户通过代码来绘制多种图形(如甘特图、流图、类图、顺序图等)，首先</p>
 <ul>
 <li>列表1</li>
 <li>列表2<br>a 子列表<br>b 子列表  </li>
@@ -123,8 +102,11 @@
 <p>引用</p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
       <tags>
-        <tag>-Markdown</tag>
+        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>
