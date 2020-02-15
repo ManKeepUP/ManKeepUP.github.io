@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>ManKeepUP</title>
   
-  <subtitle>A Man Always Keep Up!</subtitle>
+  <subtitle>Man Always Keep Up!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mankeepup.github.io/"/>
-  <updated>2020-02-15T09:18:22.202Z</updated>
+  <updated>2020-02-15T08:59:55.903Z</updated>
   <id>https://mankeepup.github.io/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JDBC基础</title>
-    <link href="https://mankeepup.github.io/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/"/>
-    <id>https://mankeepup.github.io/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/</id>
-    <published>2020-02-13T16:00:00.000Z</published>
-    <updated>2020-02-15T09:18:22.202Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>从这里开始了解JDBC…</p></blockquote><a id="more"></a><div class="note primary">            <p>笔记的相关内容来自于B站的<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL2F2NTkyNjM4NjAvP3NwbV9pZF9mcm9tPTMzMy43ODguYl82MzZmNmQ2ZDY1NmU3NC4zNA==" title="https://www.bilibili.com/video/av59263860/?spm_id_from=333.788.b_636f6d6d656e74.34">JDBC教程<i class="fa fa-external-link"></i></span></p>          </div><h1 id="1-JDBC是什么？"><a href="#1-JDBC是什么？" class="headerlink" title="1.JDBC是什么？"></a>1.JDBC是什么？</h1><p>&emsp;&emsp;JDBC全称Java DataBase Connectivity(即Java语言连接数据库)。JDBC的本质是SUN公司制定的一套接口(interface)，JDBC属于<mark>java.sql.*;</mark>这个软件包下还有很多其他接口。每一个接口都有<mark>调用者和实现者</mark>。面向接口调用，面向接口写实现类，这些都属于面向接口编程。<br><div class="note info">            <p>为什么要面向接口编程？</p>          </div></p><blockquote><p><strong>解耦合</strong>：降低程序的耦合度，提高程序的扩展力；</p></blockquote><div class="note info">            <p>多态机制</p>          </div>  <p>&emsp;&emsp;多态机制就是非常典型的面向抽象编程，举例如下，其中Animal是抽象类，而Dog和Cat是具体的对象，由Animal这个抽象的父类可以衍生出各种不同形态的子类(对象)，于是，“多态”的概念可以窥见一斑；</p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">建议：  </span><br><span class="line"><span class="addition">+ Animal a = new Cat();  </span></span><br><span class="line"><span class="addition">+ Animal d = new Dog();</span></span><br><span class="line"><span class="addition">+ public void feed(Animal a)//(面向父类型编程)  </span></span><br><span class="line"><span class="addition">+   </span></span><br><span class="line"><span class="addition">+      </span></span><br><span class="line">不建议：  </span><br><span class="line"><span class="deletion">- Dog d = new Dog();  </span></span><br><span class="line"><span class="deletion">- Cat t = new Cat();</span></span><br></pre></td></tr></table></figure><div class="note info">            <p>为什么SUN公司要指定一套JDBC接口？</p>          </div><p>&emsp;&emsp;因为每一个数据库的底层实现原理都不同，如Orcal,MySQL,MS Sqlsever等数据库都有自己的实现原理，通过接口我们可以调用任何一个数据库来使用，而不用关心接口底下的实现方式。因此，SUN公司定义好这样一个连接数据的接口后，大大减小了程序员的工作量。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;从这里开始了解JDBC…&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="Java&#39;s Everything" scheme="https://ManKeepUP.github.io/categories/Java-s-Everything/"/>
-    
-    
-      <category term="JDBC" scheme="https://ManKeepUP.github.io/tags/JDBC/"/>
-    
-  </entry>
   
   <entry>
     <title>Java环境</title>
@@ -63,6 +38,31 @@
     
     
       <category term="Java环境搭建" scheme="https://ManKeepUP.github.io/tags/Java%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JDBC基础</title>
+    <link href="https://mankeepup.github.io/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/"/>
+    <id>https://mankeepup.github.io/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-02-13T16:00:00.000Z</published>
+    <updated>2020-02-15T09:18:22.202Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>从这里开始了解JDBC…</p></blockquote><a id="more"></a><div class="note primary">            <p>笔记的相关内容来自于B站的<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL2F2NTkyNjM4NjAvP3NwbV9pZF9mcm9tPTMzMy43ODguYl82MzZmNmQ2ZDY1NmU3NC4zNA==" title="https://www.bilibili.com/video/av59263860/?spm_id_from=333.788.b_636f6d6d656e74.34">JDBC教程<i class="fa fa-external-link"></i></span></p>          </div><h1 id="1-JDBC是什么？"><a href="#1-JDBC是什么？" class="headerlink" title="1.JDBC是什么？"></a>1.JDBC是什么？</h1><p>&emsp;&emsp;JDBC全称Java DataBase Connectivity(即Java语言连接数据库)。JDBC的本质是SUN公司制定的一套接口(interface)，JDBC属于<mark>java.sql.*;</mark>这个软件包下还有很多其他接口。每一个接口都有<mark>调用者和实现者</mark>。面向接口调用，面向接口写实现类，这些都属于面向接口编程。<br><div class="note info">            <p>为什么要面向接口编程？</p>          </div></p><blockquote><p><strong>解耦合</strong>：降低程序的耦合度，提高程序的扩展力；</p></blockquote><div class="note info">            <p>多态机制</p>          </div>  <p>&emsp;&emsp;多态机制就是非常典型的面向抽象编程，举例如下，其中Animal是抽象类，而Dog和Cat是具体的对象，由Animal这个抽象的父类可以衍生出各种不同形态的子类(对象)，于是，“多态”的概念可以窥见一斑；</p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">建议：  </span><br><span class="line"><span class="addition">+ Animal a = new Cat();  </span></span><br><span class="line"><span class="addition">+ Animal d = new Dog();</span></span><br><span class="line"><span class="addition">+ public void feed(Animal a)//(面向父类型编程)  </span></span><br><span class="line"><span class="addition">+   </span></span><br><span class="line"><span class="addition">+      </span></span><br><span class="line">不建议：  </span><br><span class="line"><span class="deletion">- Dog d = new Dog();  </span></span><br><span class="line"><span class="deletion">- Cat t = new Cat();</span></span><br></pre></td></tr></table></figure><div class="note info">            <p>为什么SUN公司要指定一套JDBC接口？</p>          </div><p>&emsp;&emsp;因为每一个数据库的底层实现原理都不同，如Orcal,MySQL,MS Sqlsever等数据库都有自己的实现原理，通过接口我们可以调用任何一个数据库来使用，而不用关心接口底下的实现方式。因此，SUN公司定义好这样一个连接数据的接口后，大大减小了程序员的工作量。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;从这里开始了解JDBC…&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java&#39;s Everything" scheme="https://ManKeepUP.github.io/categories/Java-s-Everything/"/>
+    
+    
+      <category term="JDBC" scheme="https://ManKeepUP.github.io/tags/JDBC/"/>
     
   </entry>
   
