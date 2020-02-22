@@ -132,6 +132,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Java环境</title>
+    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>Java开发环境的搭建过程…</p>
+<a id="more"></a>
+<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
+<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
+      <categories>
+        <category>Java&#39;s Everything</category>
+      </categories>
+      <tags>
+        <tag>Java环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JDBC基础</title>
     <url>/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>从这里开始了解JDBC…</p>
@@ -184,20 +198,6 @@
       </categories>
       <tags>
         <tag>JDBC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java环境</title>
-    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>Java开发环境的搭建过程…</p>
-<a id="more"></a>
-<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
-<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
-      <categories>
-        <category>Java&#39;s Everything</category>
-      </categories>
-      <tags>
-        <tag>Java环境搭建</tag>
       </tags>
   </entry>
   <entry>
