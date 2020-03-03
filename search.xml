@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>某SRC厂商信息收集实例</title>
+    <url>/2020/03/02/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/src%E5%8E%82%E5%95%86%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p>渗透测试的关键环节——信息收集…<br><a id="more"></a></p>
+<div class="note warning">
+            <h4 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h4><p>现记录对某一src厂商作信息收集的基本过程，一方面用于作为信息收集笔记的必要组成部分，另一方面用于日后挖漏洞作前期准备，未经许可任何人不得转载。<br>合理运用所学知识，共同遵守国家网络安全法律规范。</p>
+          </div>
+<h1 id="查看src厂商提供的服务-子公司"><a href="#查看src厂商提供的服务-子公司" class="headerlink" title="查看src厂商提供的服务(子公司)"></a>查看src厂商提供的服务(子公司)</h1><p>查看网站的“网页地图”</p>
+<h1 id="src子域名的收集"><a href="#src子域名的收集" class="headerlink" title="src子域名的收集"></a>src子域名的收集</h1><ul>
+<li>通过子域名枚举工具，如subDomainBrute,Sublist3r,subfinder。这里主要通过Sublist3r来收集。</li>
+<li>通过ssl证书来查询，如<span class="exturl" data-url="aHR0cHM6Ly9teXNzbC5jb20v77yMY2Vuc3lz77yMY3J0c2g=" title="https://myssl.com/，censys，crtsh">https://myssl.com/，censys，crtsh<i class="fa fa-external-link"></i></span></li>
+<li>第三方网站接口查询，如google，baidu，bing，fofa</li>
+</ul>
+<blockquote>
+<p>ps:通过ssl查询的域名很多时候是新业务下的域名，找到漏洞的可能性更大</p>
+</blockquote>
+<h1 id="IP段的收集"><a href="#IP段的收集" class="headerlink" title="IP段的收集"></a>IP段的收集</h1><ul>
+<li>通过shodan来收集ip段</li>
+<li>通过AS号来收集ip段<br>线上工具：<span class="exturl" data-url="aHR0cHM6Ly9iZ3AuaGUubmV0" title="https://bgp.he.net">bgp<i class="fa fa-external-link"></i></span><br>以访问腾讯的IP地址为例，结果如下：</li>
+</ul>
+<h1 id="进一步信息收集"><a href="#进一步信息收集" class="headerlink" title="进一步信息收集"></a>进一步信息收集</h1><p>利用masscan来扫描全端口，再调用nmap来扫描端口开启的服务</p>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Academic/Google学术</title>
     <url>/2020/02/26/Academic/Google%E5%AD%A6%E6%9C%AF/</url>
     <content><![CDATA[]]></content>
@@ -287,6 +316,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Java环境</title>
+    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>Java开发环境的搭建过程…</p>
+<a id="more"></a>
+<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
+<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
+      <categories>
+        <category>Java&#39;s Everything</category>
+      </categories>
+      <tags>
+        <tag>Java环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JDBC基础</title>
     <url>/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>从这里开始了解JDBC…</p>
@@ -342,23 +385,10 @@
       </tags>
   </entry>
   <entry>
-    <title>Java环境</title>
-    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>Java开发环境的搭建过程…</p>
-<a id="more"></a>
-<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
-<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
-      <categories>
-        <category>Java&#39;s Everything</category>
-      </categories>
-      <tags>
-        <tag>Java环境搭建</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2月20日作业</title>
     <url>/2020/02/13/Rainman-Homework/0220-02-%E7%8E%8B%E5%85%83%E7%81%BF(%E4%BD%9C%E4%B8%9A-python%E5%8F%98%E9%87%8F-%E7%AE%80%E5%8D%95%E6%95%B0)/</url>
     <content><![CDATA[<a id="more"></a>
+<p><img src="http://q635dmfsb.bkt.clouddn.com/3.jpg?e=1583155549&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:HbiiLhMA31jTr-H1elXhTsq1r0E=" alt="hahha"></p>
 <div class="note primary">
             <p>经过一些折腾，我的个人博客站已经基本搭建完毕(基于Hexo,github，采用NexT主题)，作业和日报将发布在博客的相应归档文件夹中，<a href="https://mankeepup.github.io/">ManKeepUP</a>期待你的访问。</p>
           </div>
