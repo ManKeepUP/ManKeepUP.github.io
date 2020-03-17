@@ -1,26 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>在Windows系统中建立隐藏账号</title>
+    <url>/2020/03/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Windows%E7%B3%BB%E7%BB%9F/%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8BWindows%E9%9A%90%E8%97%8F%E8%B4%A6%E5%8F%B7/</url>
+    <content><![CDATA[<blockquote>
+<p>记录在windows 7系统建立一个隐藏账号的过程…<br><a id="more"></a></p>
+</blockquote>
+<p>首先让我们来了解一些关于隐藏账户的知识<br><div class="note info">
+            <h4 id="windows隐藏账户"><a href="#windows隐藏账户" class="headerlink" title="windows隐藏账户"></a>windows隐藏账户</h4><p>隐藏账户就是在开机登录的时候看不到，在控制面板的用户中心中看不到，在管理工具中本地用户和组中还是看不到。通过为注册表指定权限后在注册表中也是看不到，是真正的隐形账户。</p>
+          </div></p>
+<div class="note success no-icon">
+            <p>ps:现在有些版本的win10系统在用户和组管理上做了优化，我们可能在计算机管理面板中看不到“用户和组”这个文件夹了，所以这里介绍的是在win7系统中建立隐藏账号的过程。</p>
+          </div>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>如下图所示{}</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="建立cmd隐藏账号"><a href="#建立cmd隐藏账号" class="headerlink" title="建立cmd隐藏账号"></a>建立cmd隐藏账号</h1><p>win+R打开对话框，输入cmd启动命令行终端，输入以下命令创建用户，成功后会有执行成功的提示。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//example为用户名，123为密码，$表示隐藏用户</span><br><span class="line">net user example$ 123 /add</span><br><span class="line">//将用户添加到管理员组</span><br><span class="line">net localgroup administrators example$</span><br></pre></td></tr></table></figure></p>
+<h1 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h1><h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><h1 id="注册表"><a href="#注册表" class="headerlink" title="注册表"></a>注册表</h1><h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1>]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>windows基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux初级</title>
+    <url>/2020/03/03/Computer%20Language/Linux/Linux%E5%88%9D%E7%BA%A7/</url>
+    <content><![CDATA[<p>Linux一些基础知识…<br><a id="more"></a></p>
+<blockquote>
+<p>为什么Linux中rwx对应的权值是421而不是其他数值？</p>
+</blockquote>
+<p>&emsp;&emsp;421分别对应着2的幂次方的结果(从0开始)，即2^2,2^1,2^0结果为4,2,1。这种设定方式于计算机的二进制存储理念一致，能加快计算速度。<br>&emsp;&emsp;根据某一用户当前的权值来判断他拥有的权限类型方式如下：</p>
+<ul>
+<li>如果一个人拥有读和写的权限，现在他的权限值为6，当需要判断他是否拥有写权限时，只需要用6和2进行按位与运算(6 &amp; 2 = 2)，结果非0 ，所以可以判断拥有此权限。</li>
+<li>当需要判断他是否拥有可执行权限时，同样只需要用 6 和 1 进行按位与运算(6 &amp; 1 = 0 )，结果为0，所以可以判断不拥有此权限。</li>
+</ul>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p>1.<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZvbGxvd015SW5jbGluYXRpb25zL2FydGljbGUvZGV0YWlscy83MjEyMzQyOQ==" title="https://blog.csdn.net/followMyInclinations/article/details/72123429">哈哈满<i class="fa fa-external-link"></i></span></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>某SRC厂商信息收集实例</title>
-    <url>/2020/03/02/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/src%E5%8E%82%E5%95%86%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%AE%9E%E4%BE%8B/</url>
+    <url>/2020/03/02/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/0302-02-%E7%8E%8B%E5%85%83%E7%81%BF(%E4%BD%9C%E4%B8%9A-src%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86)/</url>
     <content><![CDATA[<p>渗透测试的关键环节——信息收集…<br><a id="more"></a></p>
 <div class="note warning">
             <h4 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h4><p>现记录对某一src厂商作信息收集的基本过程，一方面用于作为信息收集笔记的必要组成部分，另一方面用于日后挖漏洞作前期准备，未经许可任何人不得转载。<br>合理运用所学知识，共同遵守国家网络安全法律规范。</p>
           </div>
-<h1 id="查看src厂商提供的服务-子公司"><a href="#查看src厂商提供的服务-子公司" class="headerlink" title="查看src厂商提供的服务(子公司)"></a>查看src厂商提供的服务(子公司)</h1><p>查看网站的“网页地图”</p>
+<h1 id="查看src厂商提供的服务-子公司"><a href="#查看src厂商提供的服务-子公司" class="headerlink" title="查看src厂商提供的服务(子公司)"></a>查看src厂商提供的服务(子公司)</h1><p>查看网站的“网页地图”<br><img src="http://q635dmfsb.bkt.clouddn.com/src%E4%B8%9A%E5%8A%A1_%E7%BD%91%E7%AB%99%E5%9C%B0%E5%9B%BE.png?e=1583210219&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:9D4A-VK94F_QaLMWZMlf5cV1pBE=" alt="网站地图"></p>
 <h1 id="src子域名的收集"><a href="#src子域名的收集" class="headerlink" title="src子域名的收集"></a>src子域名的收集</h1><ul>
 <li>通过子域名枚举工具，如subDomainBrute,Sublist3r,subfinder。这里主要通过Sublist3r来收集。</li>
 <li>通过ssl证书来查询，如<span class="exturl" data-url="aHR0cHM6Ly9teXNzbC5jb20v77yMY2Vuc3lz77yMY3J0c2g=" title="https://myssl.com/，censys，crtsh">https://myssl.com/，censys，crtsh<i class="fa fa-external-link"></i></span></li>
 <li>第三方网站接口查询，如google，baidu，bing，fofa</li>
 </ul>
+<p><img src="http://q635dmfsb.bkt.clouddn.com/ssl.png?e=1583210368&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:OUel1uAPSpZwOgAsbqM1gAtp8i0=" alt="ssl"></p>
 <blockquote>
 <p>ps:通过ssl查询的域名很多时候是新业务下的域名，找到漏洞的可能性更大</p>
 </blockquote>
 <h1 id="IP段的收集"><a href="#IP段的收集" class="headerlink" title="IP段的收集"></a>IP段的收集</h1><ul>
 <li>通过shodan来收集ip段</li>
-<li>通过AS号来收集ip段<br>线上工具：<span class="exturl" data-url="aHR0cHM6Ly9iZ3AuaGUubmV0" title="https://bgp.he.net">bgp<i class="fa fa-external-link"></i></span><br>以访问腾讯的IP地址为例，结果如下：</li>
+<li>通过AS号来收集ip段<br>线上工具：<span class="exturl" data-url="aHR0cHM6Ly9iZ3AuaGUubmV0" title="https://bgp.he.net">bgp<i class="fa fa-external-link"></i></span><br>以访问腾讯的IP地址为例，结果如下：<br><img src="http://q635dmfsb.bkt.clouddn.com/src_bgp_IP%E8%8E%B7%E5%8F%96.png?e=1583210152&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:XtjIFYIPWPBWc4Bgunp-uW5vw-8=" alt="bgp"><h1 id="进一步信息收集"><a href="#进一步信息收集" class="headerlink" title="进一步信息收集"></a>进一步信息收集</h1>利用masscan来扫描全端口，再调用nmap来扫描端口开启的服务</li>
 </ul>
-<h1 id="进一步信息收集"><a href="#进一步信息收集" class="headerlink" title="进一步信息收集"></a>进一步信息收集</h1><p>利用masscan来扫描全端口，再调用nmap来扫描端口开启的服务</p>
 ]]></content>
       <categories>
         <category>网络安全</category>
@@ -387,8 +438,7 @@
   <entry>
     <title>2月20日作业</title>
     <url>/2020/02/13/Rainman-Homework/0220-02-%E7%8E%8B%E5%85%83%E7%81%BF(%E4%BD%9C%E4%B8%9A-python%E5%8F%98%E9%87%8F-%E7%AE%80%E5%8D%95%E6%95%B0)/</url>
-    <content><![CDATA[<a id="more"></a>
-<p><img src="http://q635dmfsb.bkt.clouddn.com/3.jpg?e=1583155549&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:HbiiLhMA31jTr-H1elXhTsq1r0E=" alt="hahha"></p>
+    <content><![CDATA[<p><img src="http://q635dmfsb.bkt.clouddn.com/3.jpg?e=1583155549&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:HbiiLhMA31jTr-H1elXhTsq1r0E=" alt="hahha"><br><a id="more"></a></p>
 <div class="note primary">
             <p>经过一些折腾，我的个人博客站已经基本搭建完毕(基于Hexo,github，采用NexT主题)，作业和日报将发布在博客的相应归档文件夹中，<a href="https://mankeepup.github.io/">ManKeepUP</a>期待你的访问。</p>
           </div>
