@@ -56,13 +56,11 @@
 <meta property="og:url" content="https://mankeepup.github.io/2020/02/22/Computer%20Language/Python/python%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="ManKeepUP">
 <meta property="og:description" content="这是《python编程·从入门到实践》一书的读书笔记，从这里开始了解关于python的基础知识，当然这也将是一份复习回顾的好材料…">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWYN2uKWh9Em4Qg7UTvQDe1aBf5TXyW*l0uj59407aU.aII2B2fy0CHkBm2dMhRXK8KREo7a5pBWJCzQM2Sy6mUU!/b&amp;bo=oADqAAAAAAADB2g!&amp;rf=viewer_4">
 <meta property="article:published_time" content="2020-02-22T03:32:00.000Z">
-<meta property="article:modified_time" content="2020-02-27T13:14:57.841Z">
+<meta property="article:modified_time" content="2020-03-27T03:16:39.552Z">
 <meta property="article:author" content="ManKeepUP">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWYN2uKWh9Em4Qg7UTvQDe1aBf5TXyW*l0uj59407aU.aII2B2fy0CHkBm2dMhRXK8KREo7a5pBWJCzQM2Sy6mUU!/b&amp;bo=oADqAAAAAAADB2g!&amp;rf=viewer_4">
 
 <link rel="canonical" href="https://mankeepup.github.io/2020/02/22/Computer%20Language/Python/python%E5%9F%BA%E7%A1%80/">
 
@@ -381,9 +379,9 @@
             <h4 id="暂未解决："><a href="#暂未解决：" class="headerlink" title="暂未解决："></a>暂未解决：</h4><p>还有通过translate()方法也可以删除字符串中的指定字符，如何用它来删除空白字符？</p>
           </div>
 <div class="note danger">
-            <h4 id="字符串语法错误："><a href="#字符串语法错误：" class="headerlink" title="字符串语法错误："></a>字符串语法错误：</h4><p>在双引号内包含撇号是正确的，但如果在单引号内包好撇号，将可能会把撇号后面的内容视为python代码，从而提示语法错误。</p>
+            <h4 id="字符串语法错误："><a href="#字符串语法错误：" class="headerlink" title="字符串语法错误："></a>字符串语法错误：</h4><p>在双引号内包含撇号是正确的，但如果在单引号内包含撇号，将可能会把撇号后面的内容视为python代码，从而提示语法错误。</p>
           </div>
-<h3 id="动手试一试-2"><a href="#动手试一试-2" class="headerlink" title="动手试一试"></a>动手试一试</h3><div class="tabs" id="chapter0202"><ul class="nav-tabs"><li class="tab"><a href="#chapter0202-1">2-3.个性化消息</a></li><li class="tab"><a href="#chapter0202-2">2-4.调整名字的大小写</a></li><li class="tab"><a href="#chapter0202-3">2-5.名言</a></li><li class="tab"><a href="#chapter0202-4">2-6.名言2</a></li><li class="tab active"><a href="#chapter0202-5">2-7.剔除人名中的空白</a></li></ul><div class="tab-content"><div class="tab-pane" id="chapter0202-1"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"Jackson"</span></span><br><span class="line">print(<span class="string">"Hello "</span> + name + <span class="string">", would you like to learn some python today?"</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-2"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"lebron·james"</span></span><br><span class="line">print(name.lower())</span><br><span class="line">print(name.upper())</span><br><span class="line">print(name.title())</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-3"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"Steve·Jobs"</span></span><br><span class="line">print(name + <span class="string">" once said, "</span> + <span class="string">'"Stay foolish, stay hungry."'</span> )</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-4"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">famous_person = <span class="string">"Steve·Jobs"</span></span><br><span class="line">message = <span class="string">" Stay foolish, stay hungry."</span></span><br><span class="line">print(famous_person + <span class="string">" once said,"</span> + <span class="string">'"'</span> + message +<span class="string">'"'</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane active" id="chapter0202-5"><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"    Wang \nyuan \tcan "</span></span><br><span class="line">print(name)</span><br><span class="line">print(<span class="string">"\n"</span> + name.lstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.rstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.strip())</span><br></pre></td></tr></table></figure><br>2-7的运行结果如下。<br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWYN2uKWh9Em4Qg7UTvQDe1aBf5TXyW*l0uj59407aU.aII2B2fy0CHkBm2dMhRXK8KREo7a5pBWJCzQM2Sy6mUU!/b&amp;bo=oADqAAAAAAADB2g!&amp;rf=viewer_4" alt="Fig.2-7"></p></div></div></div>
+<h3 id="动手试一试-2"><a href="#动手试一试-2" class="headerlink" title="动手试一试"></a>动手试一试</h3><div class="tabs" id="chapter0202"><ul class="nav-tabs"><li class="tab"><a href="#chapter0202-1">2-3.个性化消息</a></li><li class="tab"><a href="#chapter0202-2">2-4.调整名字的大小写</a></li><li class="tab"><a href="#chapter0202-3">2-5.名言</a></li><li class="tab"><a href="#chapter0202-4">2-6.名言2</a></li><li class="tab active"><a href="#chapter0202-5">2-7.剔除人名中的空白</a></li></ul><div class="tab-content"><div class="tab-pane" id="chapter0202-1"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"Jackson"</span></span><br><span class="line">print(<span class="string">"Hello "</span> + name + <span class="string">", would you like to learn some python today?"</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-2"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"lebron·james"</span></span><br><span class="line">print(name.lower())</span><br><span class="line">print(name.upper())</span><br><span class="line">print(name.title())</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-3"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"Steve·Jobs"</span></span><br><span class="line">print(name + <span class="string">" once said, "</span> + <span class="string">'"Stay foolish, stay hungry."'</span> )</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-4"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">famous_person = <span class="string">"Steve·Jobs"</span></span><br><span class="line">message = <span class="string">" Stay foolish, stay hungry."</span></span><br><span class="line">print(famous_person + <span class="string">" once said,"</span> + <span class="string">'"'</span> + message +<span class="string">'"'</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane active" id="chapter0202-5"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"    Wang \nyuan \tcan "</span></span><br><span class="line">print(name)</span><br><span class="line">print(<span class="string">"\n"</span> + name.lstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.rstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.strip())</span><br></pre></td></tr></table></figure></div></div></div>
 </li>
 </ul>
 <h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><ul>
@@ -663,8 +661,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/" rel="prev" title="Java环境">
-      <i class="fa fa-chevron-left"></i> Java环境
+    <a href="/2020/02/14/Computer%20Language/Java/JDBC%E5%9F%BA%E7%A1%80/" rel="prev" title="JDBC基础">
+      <i class="fa fa-chevron-left"></i> JDBC基础
     </a></div>
       <div class="post-nav-item">
     <a href="/2020/02/26/Academic/Google%E5%AD%A6%E6%9C%AF/" rel="next" title="Academic/Google学术">
@@ -746,7 +744,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -759,7 +757,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1095,12 +1093,12 @@ if(canvas.getContext){
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">26k</span>
+    <span title="站点总字数">30k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">28 分钟</span>
 </div><div class="translate-style">
 繁/简：<a id="translateLink" href="javascript:translatePage();" rel="external nofollow noreferrer">繁体
 </a>

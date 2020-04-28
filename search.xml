@@ -1,6 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Upload-labs Keys</title>
+    <url>/2020/04/28/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/upload_labs_keys/</url>
+    <content><![CDATA[<p>Welcome to Upload-labs Keys!<br><a id="more"></a></p>
+<h1 id="Upload-labs-Keys"><a href="#Upload-labs-Keys" class="headerlink" title="Upload-labs Keys"></a>Upload-labs Keys</h1><h2 id="搭建靶场的注意事项"><a href="#搭建靶场的注意事项" class="headerlink" title="搭建靶场的注意事项"></a>搭建靶场的注意事项</h2><ul>
+<li>将upload-labs-master的靶场环境放在phpstudy的www目录下，并将文件名修改为upload-labs</li>
+<li>将phpstudy版本修改为降低为5.xx.xx版本，避免版本过高导致Cknife 1.0 release版本在连接服务器时失败</li>
+</ul>
+<h2 id="Pass-01"><a href="#Pass-01" class="headerlink" title="Pass-01"></a>Pass-01</h2><p><mark>考察点：客户端JS检查</mark></p>
+<ul>
+<li><p>查看源码<br>在源码中定义了允许上传的文件类型如下：  </p>
+<figure class="highlight lasso"><table><tr><td class="code"><pre><span class="line">$ext_arr = <span class="built_in">array</span>(<span class="string">'jpg'</span>,<span class="string">'png'</span>,<span class="string">'gif'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传一句话php代码<br>首先我们新建一个允许上传的文件，文件内容为php一句话木马<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass01/pass01_01.png" alt=""></p>
+</li>
+<li><p>在靶场中上传编写好的文件，点击上传，用burpsuite抓取该数据包<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass01/pass01_02.png" alt=""></p>
+</li>
+<li><p>将抓取到的数据包发送到Repeater模块<br>在Repeaeter模块中我们将文件的后缀名修改为php，然后点击Go<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass01/pass01_03.png" alt=""></p>
+</li>
+<li><p>将返回的Response数据中的文件信息复制，通过Cknife来连接此漏洞，Cknife中添加链接如下：<span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMS91cGxvYWQtbGFicy91cGxvYWQvcGFzczAxLnBocO+8jOi/nuaOpeWvhueggeS4ukAmYW1wO19QT1NU5Lit55qE5YaF5a65" title="http://127.0.0.1/upload-labs/upload/pass01.php，连接密码为@&amp;_POST中的内容">http://127.0.0.1/upload-labs/upload/pass01.php，连接密码为@&amp;_POST中的内容<i class="fa fa-external-link"></i></span><br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass01/pass01_04.png" alt=""></p>
+</li>
+<li><p>连接成功后能够通过CKnife进入Webshell<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass01/pass01_05.png" alt=""></p>
+</li>
+</ul>
+<h2 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h2><p><mark>考察点：服务端对数据包的MIME进行检查，需要修改Content-Tyep</mark></p>
+<ul>
+<li>创建pass02.php文件，文件内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>上传pass02.php，利用burpsuite抓取该数据包<br>当服务器接收到php类型的文件时，Content-Type的值为application/octet-stream，而当文件类型为jpg格式时，Content-Type：image/jpeg<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass02/pass0201.png" alt=""></li>
+<li>修改Content-Type字段的值为允许上传的文件类型，然后重放数据包<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass02/pass0202.png" alt=""></li>
+<li>访问上传文件的url<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass02/pass0203.png" alt=""></li>
+</ul>
+<h2 id="Pass-03"><a href="#Pass-03" class="headerlink" title="Pass-03"></a>Pass-03</h2><p><mark>考察点：黑名单绕过</mark></p>
+<ul>
+<li>修改Apache的httpd.conf文件，使其包含如下配置：<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">AddType application/x-httpd-php <span class="string">.php</span> <span class="string">.php3</span> <span class="string">.phtml</span></span><br></pre></td></tr></table></figure>
+有了上述配置后，服务器就会将php3，phtml后缀的文件当作php解析</li>
+<li>新建一个文件名为pass03.php3，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass03.php3上传至服务器</li>
+<li>访问该文件</li>
+</ul>
+<h2 id="Pass-04"><a href="#Pass-04" class="headerlink" title="Pass-04"></a>Pass-04</h2><p><mark>考察点：黑名单绕过</mark></p>
+<ul>
+<li>黑名单中没有包括.htaccess，利用Apache的.htaccess文件上传解析漏洞</li>
+<li>靶机中的httpd.conf作如下配置：<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">AllowOverride <span class="keyword">All</span></span><br></pre></td></tr></table></figure></li>
+<li>.htaccess文件的内容如下<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">AddType <span class="built_in">application</span>/x-httpd-php .jpg</span><br></pre></td></tr></table></figure>
+上述配置使得服务器将所有.jpg后缀的文件当作php文件解析</li>
+<li>将.htaccess文件上传到服务器</li>
+<li>新建一个文件名为pass04.jpg，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass04.jpg上传至服务器</li>
+<li>访问该文件<br>访问该文件时显示该文件被下载</li>
+</ul>
+<h2 id="Pass-05"><a href="#Pass-05" class="headerlink" title="Pass-05"></a>Pass-05</h2><p><mark>考察点：大小写绕过</mark></p>
+<ul>
+<li>黑名单中包括了.htaccess，但是源代码没有转为小写的函数</li>
+<li>新建一个文件名为pass05.PhP，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass05.PhP上传至服务器</li>
+<li>访问该文件<br>访问该文件时提示http 500错误</li>
+</ul>
+<h2 id="Pass-06"><a href="#Pass-06" class="headerlink" title="Pass-06"></a>Pass-06</h2><p><mark>考察点：空格绕过</mark></p>
+<ul>
+<li>源代码缺少$file_ext = trim($file_ext); //收尾去空</li>
+<li>新建一个文件名为pass06.php[空格]，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass06.php[空格]上传至服务器</li>
+<li>访问该文件<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass06/pass0601.png" alt=""></li>
+</ul>
+<h2 id="Pass-07"><a href="#Pass-07" class="headerlink" title="Pass-07"></a>Pass-07</h2><p><mark>考察点：文件名后缀加.绕过</mark><br>利用了windows系统的特性，会自动去掉后缀名中最后的.</p>
+<ul>
+<li>新建一个文件名为pass07.php.，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass07.php.上传至服务器<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass07/pass0701.png" alt=""></li>
+<li>访问该文件<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass07/pass0702.png" alt=""></li>
+</ul>
+<h2 id="Pass-08"><a href="#Pass-08" class="headerlink" title="Pass-08"></a>Pass-08</h2><p><mark>考察点：文件名后缀加::$DATA绕过</mark><br>    【注】：<br>    1）.Windows下NTFS文件系统的一个特性，即NTFS文件系统的存储数据流的一个属性 DATA 时，就是请求 a.asp 本身的数据，如果a.asp 还包含了其他的数据流，比如 a.asp:lake2.asp，请求 a.asp:lake2.asp::$DATA，则是请求a.asp中的流数据lake2.asp的流数据内容。<br>    2）.NTFS文件流实际应用<br>    NTFS文件系统包括对备用数据流的支持。这不是众所周知的功能，主要包括提供与Macintosh文件系统中的文件的兼容性。备用数据流允许文件包含多个数据流。每个文件至少有一个数据流。在Windows中，此默认数据流称为：$DATA。</p>
+<ul>
+<li>新建一个文件名为pass08.php::$DATA，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass08.php::$DATA上传至服务器<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass08/pass0801.png" alt=""></li>
+<li>访问时去除后缀<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass08/pass0802.png" alt=""></li>
+</ul>
+<h2 id="Pass-09"><a href="#Pass-09" class="headerlink" title="Pass-09"></a>Pass-09</h2><p><mark>考察点：拼接后的文件名</mark></p>
+<ul>
+<li>新建一个文件名为pass09.php. .[点+空格+点]，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass09.php. .[点+空格+点]上传至服务器<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass09/pass0901.png" alt=""></li>
+<li>访问该文件<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass09/pass0902.png" alt=""></li>
+</ul>
+<h2 id="Pass-10"><a href="#Pass-10" class="headerlink" title="Pass-10"></a>Pass-10</h2><p><mark>考察点：双写绕过</mark></p>
+<ul>
+<li>新建一个文件名为pass10.php，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass10.php上传至服务器</li>
+<li>在Reapeter中修改文件后缀为.phpphp<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass10/pass1001.png" alt=""></li>
+<li>访问该文件<br><img src="https://markdown-imag.oss-cn-beijing.aliyuncs.com/Upload-labs/Pass10/pass1002.png" alt=""></li>
+</ul>
+<h2 id="Pass-11"><a href="#Pass-11" class="headerlink" title="Pass-11"></a>Pass-11</h2><p><mark>考察点：%00截断绕过[POST]</mark></p>
+<ul>
+<li>新建一个文件名为pass11.jpg，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass11.jpg上传至服务器</li>
+<li>在Reapeter中修改save_path为../upload/pass11.php%00</li>
+<li>访问该文件</li>
+<li><h2 id="Pass-12"><a href="#Pass-12" class="headerlink" title="Pass-12"></a>Pass-12</h2><mark>考察点：%00截断绕过[GET]</mark></li>
+<li>新建一个文件名为pass12.php，内容如下：<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>修改post参数的值</li>
+<li>用hex修改16进制的值</li>
+<li>访问该文件</li>
+<li><h2 id="Pass-13"><a href="#Pass-13" class="headerlink" title="Pass-13"></a>Pass-13</h2><mark>考察点：加入jpg|png|gif文件的文件头来绕过</mark></li>
+<li>新建一个文件名为pass13.php，内容如下：<br>GIF89a<br>&lt;?php phpinfo(); ?&gt;</li>
+<li>将pass13.php上传至服务器</li>
+<li>利用文件包含漏洞访问上传文件，<span class="exturl" data-url="aHR0cDovLzEwLjAuMC4xMDgvaW5jbHVkZS5waHA/ZmlsZT0uL3VwbG9hZC84ODIwMTkwNjEyMTQyMDM4LmdpZg==" title="http://10.0.0.108/include.php?file=./upload/8820190612142038.gif">http://10.0.0.108/include.php?file=./upload/8820190612142038.gif<i class="fa fa-external-link"></i></span></li>
+</ul>
+<blockquote>
+<p>未完待续</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>任意文件上传</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息收集总结</title>
+    <url>/2020/04/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p><strong>摘要</strong>：本文从我对信息收集的理解开始，记述了为什么要做信息收集，以及它的意义,并对信息收集的流程和使用到的工具做了一个简单的梳理。最后，这份文档将处于持续更新状态…</p>
+<a id="more"></a>
+<h1 id="信息收集基础"><a href="#信息收集基础" class="headerlink" title="信息收集基础"></a>信息收集基础</h1><h2 id="信息收集是什么？为什么要做信息收集？"><a href="#信息收集是什么？为什么要做信息收集？" class="headerlink" title="信息收集是什么？为什么要做信息收集？"></a>信息收集是什么？为什么要做信息收集？</h2><p><strong>(1)我的经历和思考： </strong><br>&emsp;&emsp;当我刚开始接触网络安全的时候，就如同面对这个词语本身，它对我而言是一个新的未知数。于是我们试着从一些熟悉的角度来走近它：黑客、病毒、攻击…，这些看起来稍带负面色彩的字眼似乎是这之前我对于安全方面的全部理解。而随着进一步的学习，我发现之前的自己忽略了一个重要的辩证哲理：“世界上的事物都遵循对立统一规律，没有什么是孤立存在的，万物相互斗争，相互联系，辩证统一。”<br>&emsp;&emsp;网络安全确实和黑客、病毒、攻击这些概念密切相关，但我之前所忽视的是这些消极概念相对立且是我不曾知晓的另一面——白帽子、防御、渗透测试等等一些具有正义感的东西。如果我们能从事物的对立两面来看待问题，或许可以更加地看清楚它的本来面目。<br>&emsp;&emsp;当站在这个落脚点的来回望网络安全这个概念时，算是对它有了入门级的理解了吧。<br>&emsp;&emsp;今天的网络安全基本由攻击和防御两个大板块组成，全球范围内的网络每时每刻都在受到匿名黑客的各种攻击，这些攻击手段日新月异，给依赖于网络生活的现代社会带来了巨大威胁。当然我们小小的个体可能感受不到，但我们或许经历过QQ被盗号，或某个朋友的社交账号被盗后群发了一些奇怪的链接图文；然而对于一些组织、公司乃至是国家，如果遭受黑客攻击而泄露了一些隐私数据，这将可能给受害方造成不可估量的后果。所以为了维护网络的正常秩序和它的安全性，现在各个国家都非常重视这方面的建设和发展……  </p>
+<p><strong>(2) 书归正传： </strong><br>&emsp;&emsp;回到在这里要讲的“信息收集”，信息一词，在百度中记录为音讯、消息、通讯系统传输和处理的对象，泛指人类社会传播的一切内容。维基百科中又指出获取信息的“六何法”(何人（Who）、何事（What）、何时（When）、何地（Where）、何解（Why）及如何（How）)。收集，被解释为“使聚集在一起”。故而，所谓信息收集就是把特定的对象聚集到一起，而在网络安全范畴中的对象主要是指那些和计算机相关，并且有助于我们做渗透测试的信息。这些信息组成一张大的信息网络，包括网络信息、主机信息、服务器信息、人员信息等各种不同维度、不同类型的信息。通过收集这些信息，对于一个不怀好意的黑客来说，将有助于他们对目标发起强有力的攻击；而对于维护网络安全的白帽子而言，他们通过掌握这些信息，能够尽可能多的发现测试系统存在的漏洞，并及时修复它们，避免留下安全隐患，在将来造成不必要的损失。<br>&emsp;&emsp;从上面的论述中我们可以大致刚回答开始提出的两个问题：  </p>
+<ul>
+<li><p>信息收集是什么：网络安全中的信息收集，就是收集某个系统、组织、公司相关的各类信息，比如系统信息、开发信息、网络信息、服务器信息、数据库信息、人员信息等等。当然，某些敏感信息在未取得有关机构的授权时，是不能随便获取的，否则白帽子和邪恶的黑客之间的界限就会变得模糊。因此，还要特别留意法律规范对我们行为的约束。</p>
+</li>
+<li><p>为什么要做信息收集：通过信息收集，将有助于我们对目标系统进行更加全面的渗透测试，发现漏洞而后修复之，并针对测试的系统给出一份安全测试报告，优化在测试中发现的易受攻击的脆弱环节。简而言之，即未雨绸缪，而非亡羊补牢。</p>
+</li>
+</ul>
+<h1 id="开始前的准备"><a href="#开始前的准备" class="headerlink" title="开始前的准备"></a>开始前的准备</h1><h2 id="信息收集清单"><a href="#信息收集清单" class="headerlink" title="信息收集清单"></a>信息收集清单</h2><p>&emsp;&emsp;在正式开始之前，我们可以列一份清单，就像人们在GTD工作法中所做的那样——把我们要收集的信息尽可能多的列出来，在之后再次执行信息收集这个“动作”时，我们就可以对照这个信息清单来检索哪些信息是需要收集的，哪些不需要。这样一来，一方面，我们可以将这个清单与待测系统所约束的测试范围进行比对，避免非法操作；另一方面，在平常我们挖掘某一SRC厂商的漏洞时，越全面立体的信息搜集，不仅能加快我们发现漏洞的步伐，也能帮助我们找到不同种类漏洞。因此，在正式开始之前，我们可以列出一份待收集信息的清单。</p>
+<table>
+    <tr>
+        <th colspan="2">待收集信息清单</th>
+    </tr >
+    <tr >
+        <td>基础信息</td>
+        <td>
+        <b>whois信息</b>： <br> 
+ 1.注册商  <br> 
+ 2.注册人<br> 
+ 3.邮箱信息<br> 
+ 4.DNS解析服务器<br> 
+ 5.注册人联系电话<br> 
+ 6.企业备案信息<br> 
+        </td>  
+    </tr>
+    <tr >
+        <td>域名信息</td>
+        <td>
+        <b>whois信息</b>： <br> 
+ 1.注册商  <br> 
+ 2.注册人<br> 
+ 3.邮箱信息<br> 
+ 4.DNS解析服务器<br> 
+ 5.注册人联系电话<br> 
+ 6.企业备案信息<br> 
+        </td>  
+    </tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在Windows系统中建立隐藏账号</title>
     <url>/2020/03/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Windows%E7%B3%BB%E7%BB%9F/%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8BWindows%E9%9A%90%E8%97%8F%E8%B4%A6%E5%8F%B7/</url>
     <content><![CDATA[<blockquote>
@@ -49,35 +244,6 @@
       </categories>
       <tags>
         <tag>Linux基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>某SRC厂商信息收集实例</title>
-    <url>/2020/03/02/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/0302-02-%E7%8E%8B%E5%85%83%E7%81%BF(%E4%BD%9C%E4%B8%9A-src%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86)/</url>
-    <content><![CDATA[<p>渗透测试的关键环节——信息收集…<br><a id="more"></a></p>
-<div class="note warning">
-            <h4 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h4><p>现记录对某一src厂商作信息收集的基本过程，一方面用于作为信息收集笔记的必要组成部分，另一方面用于日后挖漏洞作前期准备，未经许可任何人不得转载。<br>合理运用所学知识，共同遵守国家网络安全法律规范。</p>
-          </div>
-<h1 id="查看src厂商提供的服务-子公司"><a href="#查看src厂商提供的服务-子公司" class="headerlink" title="查看src厂商提供的服务(子公司)"></a>查看src厂商提供的服务(子公司)</h1><p>查看网站的“网页地图”<br><img src="http://q635dmfsb.bkt.clouddn.com/src%E4%B8%9A%E5%8A%A1_%E7%BD%91%E7%AB%99%E5%9C%B0%E5%9B%BE.png?e=1583210219&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:9D4A-VK94F_QaLMWZMlf5cV1pBE=" alt="网站地图"></p>
-<h1 id="src子域名的收集"><a href="#src子域名的收集" class="headerlink" title="src子域名的收集"></a>src子域名的收集</h1><ul>
-<li>通过子域名枚举工具，如subDomainBrute,Sublist3r,subfinder。这里主要通过Sublist3r来收集。</li>
-<li>通过ssl证书来查询，如<span class="exturl" data-url="aHR0cHM6Ly9teXNzbC5jb20v77yMY2Vuc3lz77yMY3J0c2g=" title="https://myssl.com/，censys，crtsh">https://myssl.com/，censys，crtsh<i class="fa fa-external-link"></i></span></li>
-<li>第三方网站接口查询，如google，baidu，bing，fofa</li>
-</ul>
-<p><img src="http://q635dmfsb.bkt.clouddn.com/ssl.png?e=1583210368&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:OUel1uAPSpZwOgAsbqM1gAtp8i0=" alt="ssl"></p>
-<blockquote>
-<p>ps:通过ssl查询的域名很多时候是新业务下的域名，找到漏洞的可能性更大</p>
-</blockquote>
-<h1 id="IP段的收集"><a href="#IP段的收集" class="headerlink" title="IP段的收集"></a>IP段的收集</h1><ul>
-<li>通过shodan来收集ip段</li>
-<li>通过AS号来收集ip段<br>线上工具：<span class="exturl" data-url="aHR0cHM6Ly9iZ3AuaGUubmV0" title="https://bgp.he.net">bgp<i class="fa fa-external-link"></i></span><br>以访问腾讯的IP地址为例，结果如下：<br><img src="http://q635dmfsb.bkt.clouddn.com/src_bgp_IP%E8%8E%B7%E5%8F%96.png?e=1583210152&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:XtjIFYIPWPBWc4Bgunp-uW5vw-8=" alt="bgp"><h1 id="进一步信息收集"><a href="#进一步信息收集" class="headerlink" title="进一步信息收集"></a>进一步信息收集</h1>利用masscan来扫描全端口，再调用nmap来扫描端口开启的服务</li>
-</ul>
-]]></content>
-      <categories>
-        <category>网络安全</category>
-      </categories>
-      <tags>
-        <tag>信息收集</tag>
       </tags>
   </entry>
   <entry>
@@ -145,9 +311,9 @@
             <h4 id="暂未解决："><a href="#暂未解决：" class="headerlink" title="暂未解决："></a>暂未解决：</h4><p>还有通过translate()方法也可以删除字符串中的指定字符，如何用它来删除空白字符？</p>
           </div>
 <div class="note danger">
-            <h4 id="字符串语法错误："><a href="#字符串语法错误：" class="headerlink" title="字符串语法错误："></a>字符串语法错误：</h4><p>在双引号内包含撇号是正确的，但如果在单引号内包好撇号，将可能会把撇号后面的内容视为python代码，从而提示语法错误。</p>
+            <h4 id="字符串语法错误："><a href="#字符串语法错误：" class="headerlink" title="字符串语法错误："></a>字符串语法错误：</h4><p>在双引号内包含撇号是正确的，但如果在单引号内包含撇号，将可能会把撇号后面的内容视为python代码，从而提示语法错误。</p>
           </div>
-<h3 id="动手试一试-2"><a href="#动手试一试-2" class="headerlink" title="动手试一试"></a>动手试一试</h3><div class="tabs" id="chapter0202"><ul class="nav-tabs"><li class="tab"><a href="#chapter0202-1">2-3.个性化消息</a></li><li class="tab"><a href="#chapter0202-2">2-4.调整名字的大小写</a></li><li class="tab"><a href="#chapter0202-3">2-5.名言</a></li><li class="tab"><a href="#chapter0202-4">2-6.名言2</a></li><li class="tab active"><a href="#chapter0202-5">2-7.剔除人名中的空白</a></li></ul><div class="tab-content"><div class="tab-pane" id="chapter0202-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"Jackson"</span></span><br><span class="line">print(<span class="string">"Hello "</span> + name + <span class="string">", would you like to learn some python today?"</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"lebron·james"</span></span><br><span class="line">print(name.lower())</span><br><span class="line">print(name.upper())</span><br><span class="line">print(name.title())</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"Steve·Jobs"</span></span><br><span class="line">print(name + <span class="string">" once said, "</span> + <span class="string">'"Stay foolish, stay hungry."'</span> )</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-4"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">famous_person = <span class="string">"Steve·Jobs"</span></span><br><span class="line">message = <span class="string">" Stay foolish, stay hungry."</span></span><br><span class="line">print(famous_person + <span class="string">" once said,"</span> + <span class="string">'"'</span> + message +<span class="string">'"'</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane active" id="chapter0202-5"><p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"    Wang \nyuan \tcan "</span></span><br><span class="line">print(name)</span><br><span class="line">print(<span class="string">"\n"</span> + name.lstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.rstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.strip())</span><br></pre></td></tr></table></figure><br>2-7的运行结果如下。<br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWYN2uKWh9Em4Qg7UTvQDe1aBf5TXyW*l0uj59407aU.aII2B2fy0CHkBm2dMhRXK8KREo7a5pBWJCzQM2Sy6mUU!/b&amp;bo=oADqAAAAAAADB2g!&amp;rf=viewer_4" alt="Fig.2-7"></p></div></div></div>
+<h3 id="动手试一试-2"><a href="#动手试一试-2" class="headerlink" title="动手试一试"></a>动手试一试</h3><div class="tabs" id="chapter0202"><ul class="nav-tabs"><li class="tab"><a href="#chapter0202-1">2-3.个性化消息</a></li><li class="tab"><a href="#chapter0202-2">2-4.调整名字的大小写</a></li><li class="tab"><a href="#chapter0202-3">2-5.名言</a></li><li class="tab"><a href="#chapter0202-4">2-6.名言2</a></li><li class="tab active"><a href="#chapter0202-5">2-7.剔除人名中的空白</a></li></ul><div class="tab-content"><div class="tab-pane" id="chapter0202-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"Jackson"</span></span><br><span class="line">print(<span class="string">"Hello "</span> + name + <span class="string">", would you like to learn some python today?"</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-2"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"lebron·james"</span></span><br><span class="line">print(name.lower())</span><br><span class="line">print(name.upper())</span><br><span class="line">print(name.title())</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-3"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"Steve·Jobs"</span></span><br><span class="line">print(name + <span class="string">" once said, "</span> + <span class="string">'"Stay foolish, stay hungry."'</span> )</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="chapter0202-4"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">famous_person = <span class="string">"Steve·Jobs"</span></span><br><span class="line">message = <span class="string">" Stay foolish, stay hungry."</span></span><br><span class="line">print(famous_person + <span class="string">" once said,"</span> + <span class="string">'"'</span> + message +<span class="string">'"'</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane active" id="chapter0202-5"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">"    Wang \nyuan \tcan "</span></span><br><span class="line">print(name)</span><br><span class="line">print(<span class="string">"\n"</span> + name.lstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.rstrip())</span><br><span class="line">print(<span class="string">"\n"</span> + name.strip())</span><br></pre></td></tr></table></figure></div></div></div>
 </li>
 </ul>
 <h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><ul>
