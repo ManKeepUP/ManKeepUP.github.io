@@ -1,6 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Web安全深度剖析</title>
+    <url>/2020/05/03/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/web%E5%AE%89%E5%85%A8%E6%B7%B1%E5%BA%A6%E5%89%96%E6%9E%90/</url>
+    <content><![CDATA[<p>读书笔记之《Web安全深度剖析》<br><a id="more"></a></p>
+<h1 id="Web安全简介"><a href="#Web安全简介" class="headerlink" title="Web安全简介"></a>Web安全简介</h1><h2 id="服务器是如何被入侵的？"><a href="#服务器是如何被入侵的？" class="headerlink" title="服务器是如何被入侵的？"></a>服务器是如何被入侵的？</h2><blockquote>
+<p>攻击者渗透计算机的必要条件：  </p>
+</blockquote>
+<pre><code>攻击者的计算机能够与服务器通信（端口） 
+</code></pre><h2 id="如何更好地学习安全？"><a href="#如何更好地学习安全？" class="headerlink" title="如何更好地学习安全？"></a>如何更好地学习安全？</h2><blockquote>
+<p>编程语言  </p>
+</blockquote>
+<ul>
+<li>C/C++:永不衰败  </li>
+<li>Java:跨平台  </li>
+<li>C#:.NET Framework框架支持  </li>
+<li>Python:脚本语言，无需编译  </li>
+<li>HTML:前端语言，渗透测试必会</li>
+<li>JS:帮助理解渗透</li>
+<li>数据库：掌握一门SQL是必需的  </li>
+</ul>
+<h1 id="深入HTTP请求流程"><a href="#深入HTTP请求流程" class="headerlink" title="深入HTTP请求流程"></a>深入HTTP请求流程</h1><h2 id="HTTP协议解析"><a href="#HTTP协议解析" class="headerlink" title="HTTP协议解析"></a>HTTP协议解析</h2><p>超文本传输协议，允许将HTML文档从Web服务器传送到Web浏览器</p>
+<h3 id="发起HTTP请求"><a href="#发起HTTP请求" class="headerlink" title="发起HTTP请求"></a>发起HTTP请求</h3><blockquote>
+<p>URL标准格式</p>
+</blockquote>
+<pre><code>协议://服务器IP[:端口]/路径/[?查询]
+eg:http://www.xxx.com/post/httpxieyi.html
+</code></pre><blockquote>
+<p>HTTP工具  </p>
+</blockquote>
+<ul>
+<li>浏览器</li>
+<li>curl(Client URL)  </li>
+</ul>
+<blockquote>
+<p>curl工具学习链接   </p>
+</blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jYXRvbm1hdC5uZXQvY29va2Jvb2tzL2N1cmw=" title="https://catonmat.net/cookbooks/curl">curl cookbook<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTEvMDkvY3VybC5odG1s" title="http://www.ruanyifeng.com/blog/2011/09/curl.html">curl网站开发指南<i class="fa fa-external-link"></i></span><h3 id="HTTP协议详解"><a href="#HTTP协议详解" class="headerlink" title="HTTP协议详解"></a>HTTP协议详解</h3></li>
+</ul>
+<blockquote>
+<p>HTTP协议的无状态</p>
+</blockquote>
+<pre><code>Web浏览器和Web服务器之间不需要建立持久的连接，即客户端向服务器发出请求，服务器返回响应，连接就被关闭了。
+</code></pre><p><strong>1.HTTP请求与响应</strong><br>（1）HTTP请求  </p>
+<ul>
+<li>请求行  </li>
+<li>请求头</li>
+<li>请求正文  </li>
+</ul>
+<p>（2）HTTP响应  </p>
+<ul>
+<li>响应行  </li>
+<li>响应头</li>
+<li>响应正文</li>
+</ul>
+<p><strong>2.HTTP请求方法</strong></p>
+<ul>
+<li>GET：获取请求页面的指定信息</li>
+<li>POST：与GET类似，但有请求内容，安全性更高</li>
+<li>HEAD：用于测试超文本链接的有效性</li>
+<li>PUT：请求服务器将请求实体存储在请求资源下，请求资源存在时，用此资源更新；请求资源不存在时，创建此资源。</li>
+<li>DELETE：请求服务器删除指定的资源</li>
+<li>TRACE：回显服务器收到的请求信息，用于测试或诊断</li>
+<li>CONNECT：动态切换到隧道的代理</li>
+<li>OPTIONS：请求获得资源在通信过程中可以使用的上述功能选项。<br><mark>由于PUT和DELETE属于危险方法，通常情况下服务器会关闭它们</mark><br>【注】：<span class="exturl" data-url="aHR0cDp3d3cudzMub3JnL1Byb3RvY29scy9yZmMyNjE2L3JmYzI2MTYtc2VjOS5odG1s" title="http:www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP/1.1标准方法详情<i class="fa fa-external-link"></i></span></li>
+</ul>
+<p><strong>3.HTTP状态码</strong><br>状态码由三位数字组成，第一位数字定义了响应的类别。 </p>
+<ul>
+<li>1：信息提示，请求已被成功接收  </li>
+<li>2：成功  </li>
+<li>3：重定向  </li>
+<li>4：客户端错误状态码</li>
+<li>5：服务器内部错误</li>
+</ul>
+<p><strong>4.HTTP消息</strong><br>（1）请求头：客户端向服务器传递请求时的附加信息及客户端自身信息</p>
+<ul>
+<li>Host</li>
+<li>User-Agent</li>
+<li>Refere</li>
+<li>Cookie</li>
+<li>Range</li>
+<li>x-forward-for</li>
+<li>Accept</li>
+<li>Accept-Charset  </li>
+</ul>
+<p>（2）响应头：服务器根据请求向客户端发送的HTTP头</p>
+<ul>
+<li>Server</li>
+<li>Set-Cookie</li>
+<li>Last-Modified</li>
+<li>Location</li>
+<li>Refresh</li>
+</ul>
+<p>（3）普通头<br>（4）实体头</p>
+<ul>
+<li>Content-Type</li>
+<li>Content-Encoding</li>
+<li>Content-Length</li>
+<li>Content-Modified</li>
+<li><p>Last-Modified</p>
+<h3 id="模拟HTTP请求"><a href="#模拟HTTP请求" class="headerlink" title="模拟HTTP请求"></a>模拟HTTP请求</h3></li>
+<li><p>开启Windows中的Telnet Client程序</p>
+</li>
+<li>打开cmd，输入Telnet www.baidu.com 80 </li>
+<li>回车</li>
+<li>Ctrl+]</li>
+<li>回车</li>
+<li>输入 GET/index.html HTTP/1.1和Host:www.baidu.com(输入间隔要短，快速完成该步，避免连接失败)</li>
+<li>回车</li>
+<li>回车</li>
+<li>服务器返回数据<h3 id="HTTP协议和HTTPS协议的区别"><a href="#HTTP协议和HTTPS协议的区别" class="headerlink" title="HTTP协议和HTTPS协议的区别"></a>HTTP协议和HTTPS协议的区别</h3></li>
+</ul>
+<table>
+<tr>
+    <th>HTTP</th>
+    <th>HTTPS</th>
+</tr>
+<tr>
+    <td>
+        明文传输<br>  
+        80端口<br>  
+        不需要申请证书<br>  
+        无状态<br>  
+    </td>
+    <td>
+        SSL加密<br>  
+        443端口<br>  
+        需要申请CA证书<br>  
+        可进行加密传输、身份认证<br>  
+    </td>
+</tr>
+</table> ]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Web安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Upload-labs Keys</title>
     <url>/2020/04/28/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/upload_labs_keys/</url>
     <content><![CDATA[<p>Welcome to Upload-labs Keys!<br><a id="more"></a></p>
@@ -198,9 +338,7 @@
   <entry>
     <title>在Windows系统中建立隐藏账号</title>
     <url>/2020/03/09/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Windows%E7%B3%BB%E7%BB%9F/%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8BWindows%E9%9A%90%E8%97%8F%E8%B4%A6%E5%8F%B7/</url>
-    <content><![CDATA[<blockquote>
-<p>记录在windows 7系统建立一个隐藏账号的过程…<br><a id="more"></a></p>
-</blockquote>
+    <content><![CDATA[<p>在windows 7系统建立一个隐藏账号的过程…<br><a id="more"></a></p>
 <p>首先让我们来了解一些关于隐藏账户的知识<br><div class="note info">
             <h4 id="windows隐藏账户"><a href="#windows隐藏账户" class="headerlink" title="windows隐藏账户"></a>windows隐藏账户</h4><p>隐藏账户就是在开机登录的时候看不到，在控制面板的用户中心中看不到，在管理工具中本地用户和组中还是看不到。通过为注册表指定权限后在注册表中也是看不到，是真正的隐形账户。</p>
           </div></p>
@@ -245,11 +383,6 @@
       <tags>
         <tag>Linux基础</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Academic/Google学术</title>
-    <url>/2020/02/26/Academic/Google%E5%AD%A6%E6%9C%AF/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Python基础知识</title>
@@ -581,78 +714,15 @@
 <h3 id="4-2-5-处理查询结果集"><a href="#4-2-5-处理查询结果集" class="headerlink" title="4.2.5 处理查询结果集"></a>4.2.5 处理查询结果集</h3><p>&emsp;&emsp;当使用select语句时，我们要用查询结果集中的get方法来获取数据中的内容，用rs.next()方法来移动光标，见下图：<img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWYBaXKrJ5rgrkzw49OWXj.Kz52tgDTHBQ6iAbd0gvBcLpGoVoEU.kuCHWUlKPGiwExyrrMP7sQw4IanEWQjk4WU!/b&amp;bo=.wUIAwAAAAADB9c!&amp;rf=viewer_4" alt="Fig.遍历结果集">点击<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hbktlZXBVUC9Db2RlL2Jsb2IvbWFzdGVyL0pEQkNUZXN0MDUuamF2YQ==" title="https://github.com/ManKeepUP/Code/blob/master/JDBCTest05.java">JDBCTest05<i class="fa fa-external-link"></i></span>查看本实例的代码吧~</p>
 ]]></content>
       <categories>
-        <category>Java&#39;s Everything</category>
+        <category>Java基础</category>
       </categories>
       <tags>
         <tag>JDBC</tag>
       </tags>
   </entry>
   <entry>
-    <title>Java环境</title>
-    <url>/2020/02/14/Computer%20Language/Java/Java%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>Java开发环境的搭建过程…</p>
-<a id="more"></a>
-<p>&emsp;&emsp;从上一次用Java开发2048游戏到现在已经过去了将近3年多的时间，这期间几乎很少有再接触过Java任何相关的知识，今天，重新拾起它，仍然是一件振奋人心的事情。</p>
-<h1 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2>]]></content>
-      <categories>
-        <category>Java&#39;s Everything</category>
-      </categories>
-      <tags>
-        <tag>Java环境搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2月20日作业</title>
-    <url>/2020/02/13/Rainman-Homework/0220-02-%E7%8E%8B%E5%85%83%E7%81%BF(%E4%BD%9C%E4%B8%9A-python%E5%8F%98%E9%87%8F-%E7%AE%80%E5%8D%95%E6%95%B0)/</url>
-    <content><![CDATA[<p><img src="http://q635dmfsb.bkt.clouddn.com/3.jpg?e=1583155549&amp;token=bLIP8IasBv8uxCFDdL-gucek-rPJJT0QN4zE_7VX:HbiiLhMA31jTr-H1elXhTsq1r0E=" alt="hahha"><br><a id="more"></a></p>
-<div class="note primary">
-            <p>经过一些折腾，我的个人博客站已经基本搭建完毕(基于Hexo,github，采用NexT主题)，作业和日报将发布在博客的相应归档文件夹中，<a href="https://mankeepup.github.io/">ManKeepUP</a>期待你的访问。</p>
-          </div>
-<h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><blockquote>
-<p>下面的内容是《笨方法学Python》一书中的相关习题，本次作业一共有12道题，让我们一起来看看吧~</p>
-</blockquote>
-<h2 id="习题0：准备工作"><a href="#习题0：准备工作" class="headerlink" title="习题0：准备工作"></a>习题0：准备工作</h2><h3 id="Gedit安装"><a href="#Gedit安装" class="headerlink" title="Gedit安装"></a>Gedit安装</h3><p>&emsp;&emsp;首先，让我们来安装gedit这个工具，点击书本中提供的下载链接<span class="exturl" data-url="aHR0cDovL2xlYXJucHl0aG9udGhlaGFyZHdheS5vcmcvZXhlcmNpc2UwLmh0bWw=" title="http://learnpythonthehardway.org/exercise0.html">gedit-download<i class="fa fa-external-link"></i></span>似乎跳转到了一个404的页面，没有关系，我们同样可以在gedit的官方网站来下载它，点击<span class="exturl" data-url="aHR0cHM6Ly9nZWRpdC5lbi5zb2Z0b25pYy5jb20v" title="https://gedit.en.softonic.com/">gedit for windows<i class="fa fa-external-link"></i></span>下载吧~<br>&emsp;&emsp;如果已经下载好了，下一步书中想让我们对这个软件的一些“愚蠢”的默认设置做一些修改，这一步非常简单，我们先从软件的“首选项”进入设置页面：<br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWdIl5scIJcBJeqh8Be6at81GWOd5DbcK.NCIJVo*smaI7O7g6bZzkcAlDXSGQktXLuny8j2xP6z0UfatpDrjtXk!/b&amp;bo=LwOZAgAAAAADB5U!&amp;rf=viewer_4" alt="Fig.首选项"><br>然后分别按下图中的两个页面作相应的设置：<br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWYd9ibeNrhGnfr61uC3WcCWjtWEgEOSmfOEZp5.t03sN1Quu0J99kjqUjXnWz8*JlvG0iH71BNBITU4doRH3mzE!/b&amp;bo=lwFqAgAAAAADF8w!&amp;rf=viewer_4" alt="Fig.查看">  </p>
-<p><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWTr15oSzvTzZxKzWX0JwgSAnmgnLMmCByuQPBDDuzzZtvIMO.IWG*Uf2FMWFN4dfUDWPdOeCN65*bIIWF9Dj6zA!/b&amp;bo=lwFqAgAAAAADF8w!&amp;rf=viewer_4" alt="Fig.编辑器"></p>
-<h3 id="开始使用Python"><a href="#开始使用Python" class="headerlink" title="开始使用Python"></a>开始使用Python</h3><p>&emsp;&emsp;由于在之前我们已经做过python2和python3共存的实验，现在我们的电脑中同时安装了两个不同的python版本，通过输入不同的命令可以启动相应版本的python终端。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//启动python2版本输入指令</span><br><span class="line">python2</span><br><span class="line">//启动python3版本输入指令</span><br><span class="line">python3</span><br></pre></td></tr></table></figure><br>接下来我们要做的事情主要和文件、目录的创建有关，并且我们要在python的终端下用指令来进入一个目录，看看这个目录下面有什么。一开始，我们使用指令(如下所示)来创建一个“mystuff”文件夹，然后用gedit编辑器新建一个文件(命名为file1),将它保存在mystuff目录下。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.mkdir(<span class="string">"mystuff"</span>)</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>注意需要导入os模块，这是一个包含普遍的操作系统功能的模块  </p>
-</blockquote>
-<ul>
-<li>查看当前路径  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">os.getcwd()</span><br></pre></td></tr></table></figure></li>
-<li>切换至mystuff目录  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">os.chdir(<span class="string">"mystuff"</span>)</span><br></pre></td></tr></table></figure></li>
-<li>查看当前目录下的文件  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">os.listdir(<span class="string">'./'</span>)</span><br></pre></td></tr></table></figure>
-整个过程如下所示<img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWc5SF4W1J1*B2rewfGnP*XWGWvuTsqg88inZdeQbMoyAiAkbfbRcS4dLHcvJlGrezAjVsG*dtq8PzaEAWjLFI8g!/b&amp;bo=BAQSAQAAAAADBzE!&amp;rf=viewer_4" alt="Fig.python使用"><div class="note info">
-            <p>windows系统在不同应用中切换使用快捷键：alt+tab或者win+tab;退出python用ctrl+Z</p>
-          </div>
-</li>
-</ul>
-<h2 id="习题1：第一个程序"><a href="#习题1：第一个程序" class="headerlink" title="习题1：第一个程序"></a>习题1：第一个程序</h2><h3 id="运行python程序"><a href="#运行python程序" class="headerlink" title="运行python程序"></a>运行python程序</h3><p>&emsp;&emsp;好的，第一个习题已经顺利完成了，现在我们来看看第二个习题，它试图让我们学会运行一个python程序，并告诉我们python程序是以.py结尾的。不过这一点我们早就已经知道了，不是吗？<br><div class="note warning">
-            <p>在正式进入下面的内容之前，让我们来记录一个问题：如何切换windows的默认python版本？<br>通过查资料可以知道，只需要在电脑-属性-高级系统设置-环境变量，然后在系统变量找到Path将你想要设为默认python版本的位置前移即可。但是这一步好像并不起效，python的默认版本始终为3.7。因此下面的一些实验也将在python3而非书本中的python2版本下进行，你有必要回头再来解决这个问题。</p>
-          </div><br>&emsp;&emsp;接下来我们在gedit编辑器中编写好第一个python文件“ex1.py”，在文件所在的当前路径下用下面的命令来执行它。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python ex1.py</span><br></pre></td></tr></table></figure><br>运行程序后，我们顺利地看到了合理的运行结果：<br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWSeBzlCTegEiDycTPSyRRmS.2MjOXhjXZX4N6sGFwYA4UeypDCWowQQKJa3opBUuc6A04hgUFPRWJMntF44qCVU!/b&amp;bo=rwHaAAAAAAADB1Y!&amp;rf=viewer_4" alt="Fig.ex1"></p>
-<h3 id="加分题"><a href="#加分题" class="headerlink" title="加分题"></a>加分题</h3><p>最后，请重视每一小节的加分习题，它将帮助我们更加地深入了解python。<br><div class="note info">
-            <p>1.让你的脚本多打印一行<br>2.让脚本只打印一行<br>3.在一行的起始位置放一个‘#’(octothorpe)符号。它的作用是什么？自己研究一下。</p>
-          </div>  </p>
-<ul>
-<li>打印一行需要一个print()语句，那么通过增加一条print()就可实现脚本多打印一行，如下所示：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#在你需要增加的位置输入下面的代码：</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWbUGqYXeqLZFh9C3d34nVuoE*sWQNlukuMwLzAIW8Nnnsk**pulZhaPb5BwDvPmv6HGM7WkHTMwIwhvymnpz4Vk!/b&amp;bo=BwKOAQAAAAADB6g!&amp;rf=viewer_4" alt="Fig.增加打印行数"></p>
-<ul>
-<li>print函数默认是换行的，因此我们在屏幕上看到每用一次print()语句，它就在新的一行开始打印，如果不想换行应该写成print(<em>*</em>,end=””)，从括号内的逗号开始是你需要添加的内容。通过修改后，不管程序中有多少个print()语句，最终脚本都只输出一行内容。<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#修改后的脚本</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Hello World!"</span>,end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Hello Again"</span>,end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"I like typing this."</span>,end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"This is fun."</span>,end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'Yay！ Printing.'</span>,end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"I'd much rather you 'not'."</span>,end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'I "said" do not touch this.'</span>,end=<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
-<img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWXFZX54ZB6x3q97uSGuvbWtk14w4zSTYSuOqZF79PIm6Y3IT5TXnXG0lkynNh79wJJ4I2l5C8*OIXVKYwd2YHak!/b&amp;bo=vAQ6AAAAAAADF7A!&amp;rf=viewer_4" alt="Fig.只打印一行"></li>
-<li>如果在每一行的开头添加一个’#’号，发现这一行代码的颜色发生变化，并且最后不会打印出来，因为它被注释了<br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWe310czms9vof2nlLJRecuOKln2BibFc4nehkAXRBBUm42RHyE5nS5J.fU0NELBwVpBsjd4C5.NNAO6UFQhy0Mw!/b&amp;bo=DQKVAQAAAAADF6k!&amp;rf=viewer_4" alt="Fig.注释代码"><br><img src="http://m.qpic.cn/psc?/V12EJyj53W0gCd/lpoTnOcKgshCRzVbSpUVWWybOXH4JG1hP0ttBuEtHAFcOtLXVU362*Jqqis1jbyBbRhcvj0g8QFbKPYcqqUO3IIwuMTsXXmXqwEQT7De2zc!/b&amp;bo=PAJ8AQAAAAADF3E!&amp;rf=viewer_4" alt="Fig.注释代码"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>作业</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ManKeepUP-BLOG始末</title>
-    <url>/2020/02/09/ManKeepUP-BLOG%E5%A7%8B%E6%9C%AB/</url>
+    <url>/2020/02/09/%E5%8D%9A%E5%AE%A2%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<p>关于博客的一切…</p>
 <a id="more"></a>
 <h1 id="来了老弟"><a href="#来了老弟" class="headerlink" title="来了老弟"></a>来了老弟</h1><p>&emsp;&emsp;出于不满足，我一直在思考如何让自己的博客像浏览过的一些优秀“博客”站一样,温暖丰富，充实强大，重要的是能够进行高度定制化，将博客打造成自己的互联网“小窝”。(For Example:<span class="exturl" data-url="aHR0cHM6Ly9iZXN0enVvLmNuLw==" title="https://bestzuo.cn/">Sanarous<i class="fa fa-external-link"></i></span>)偶然中的必然，当下我正处于“无脑大学生”的状态，看到了hexo,hugo等一些部署静态网站的工具，但我几乎没有区分这些工具之间不同，选择hexo是因为自己使用过github，而它是用github pages来做的，所以相对熟悉一些，而选择NexT主题是因为学的那个教程里用的这个，而我当时试了另外一个主题好像没有成功，就这样，hexo+NexT的个人定制化博客的路程开始了！(AoLiGei~)  </p>
@@ -665,7 +735,7 @@
   </entry>
   <entry>
     <title>Markdown用法</title>
-    <url>/2020/02/08/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</url>
+    <url>/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</url>
     <content><![CDATA[<p>从这里快速入手Markdown…</p>
 <a id="more"></a>
 <div class="note primary">
