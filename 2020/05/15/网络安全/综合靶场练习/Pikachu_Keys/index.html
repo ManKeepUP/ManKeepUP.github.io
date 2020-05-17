@@ -50,19 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="从这里快速入手Markdown…">
+  <meta name="description" content="SQL-Inject数字型注入0X01.注入点判断   步骤： 1 任意选择一个userid，点击查询。用burp抓取数据包，并发送   至Repeater 2 在id后添加and 1&#x3D;1和and 1&#x3D;2看页面回显，在Response中拉   到burp底部userid表单提交后显示结果的位置 3 发现and 1&#x3D;1和and 1&#x3D;2的返回结果不同，这说明sql语句被执     行了，这里存在sql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown用法">
-<meta property="og:url" content="https://mankeepup.github.io/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:title" content="Pikachu-Keys">
+<meta property="og:url" content="https://mankeepup.github.io/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/index.html">
 <meta property="og:site_name" content="ManKeepUP">
-<meta property="og:description" content="从这里快速入手Markdown…">
-<meta property="article:published_time" content="2020-02-08T04:26:50.000Z">
-<meta property="article:modified_time" content="2020-03-23T09:38:14.582Z">
+<meta property="og:description" content="SQL-Inject数字型注入0X01.注入点判断   步骤： 1 任意选择一个userid，点击查询。用burp抓取数据包，并发送   至Repeater 2 在id后添加and 1&#x3D;1和and 1&#x3D;2看页面回显，在Response中拉   到burp底部userid表单提交后显示结果的位置 3 发现and 1&#x3D;1和and 1&#x3D;2的返回结果不同，这说明sql语句被执     行了，这里存在sql">
+<meta property="article:published_time" content="2020-05-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T07:34:47.836Z">
 <meta property="article:author" content="ManKeepUP">
-<meta property="article:tag" content="Markdown">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://mankeepup.github.io/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+<link rel="canonical" href="https://mankeepup.github.io/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/">
 
 
 <script id="page-configurations">
@@ -74,7 +73,7 @@
   };
 </script>
 
-  <title>Markdown用法 | ManKeepUP</title>
+  <title>Pikachu-Keys | ManKeepUP</title>
   
 
 
@@ -239,7 +238,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://mankeepup.github.io/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+    <link itemprop="mainEntityOfPage" href="https://mankeepup.github.io/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pic.jpg">
@@ -252,7 +251,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          Markdown用法
+          Pikachu-Keys
         </h2>
 
         <div class="post-meta">
@@ -262,7 +261,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-08 12:26:50" itemprop="dateCreated datePublished" datetime="2020-02-08T12:26:50+08:00">2020-02-08</time>
+              <time title="创建时间：2020-05-15 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-15T00:00:00+08:00">2020-05-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,8 +269,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">Markdown</span>
+                  <a href="/categories/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">综合靶场</span>
                   </a>
                 </span>
             </span>
@@ -292,23 +291,18 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/" itemprop="commentCount"></span>
     </a>
   </span>
   
-  
-    <span class="post-meta-divider">|</span>
-    <i class="fa fa-thumb-tack"></i>
-    <font color=7D26CD>置顶</font>
-    <span class="post-meta-divider">|</span>
-<br>
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>532</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -327,14 +321,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>从这里快速入手Markdown…</p>
-<a id="more"></a>
-<div class="note primary">
-            <p>欢迎阅读！Markdown同Next主题一样——强大高效，简单干净。本文将梳理Markdown中常见的语法，让你迅速用Markdown进行创作。Let’s Go!</p>
-          </div>
-<h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><h2 id="Markdown样式"><a href="#Markdown样式" class="headerlink" title="Markdown样式"></a>Markdown样式</h2><h2 id="代码块设置"><a href="#代码块设置" class="headerlink" title="代码块设置"></a>代码块设置</h2><p>&emsp;&emsp;想在文件中嵌入代码，只需要用三个‘`’符号(位于tab键上方)一上一下将代码包含在内，你可以在‘```’符号后再做进一步的设置，如language,url,title等等。   </p>
-<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="用Mermaid画图"><a href="#用Mermaid画图" class="headerlink" title="用Mermaid画图"></a>用Mermaid画图</h3><p>&emsp;&emsp;NexT允许用户通过代码来绘制多种图形(如甘特图、流图、类图、顺序图等)，在NexT主题中集成了Mermaid插件，使用它时需要我们在_config.yml文件设置为true。如果是刚开始接触，我们可以在github的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21lcm1haWQtanMvbWVybWFpZA==" title="https://github.com/mermaid-js/mermaid">mermaid<i class="fa fa-external-link"></i></span>仓库上在线画图，学习它的用法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Mermaid tag</span></span><br><span class="line">mermaid:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Available themes: default | dark | forest | neutral</span></span><br><span class="line">  theme: default</span><br></pre></td></tr></table></figure></p>
-<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>&emsp;&emsp;如果想要插入一张图片，那么可以这么做：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果是网上的图片</span></span><br><span class="line">![你给图片取的名字](图片地址链接)</span><br></pre></td></tr></table></figure></p>
+        <h1 id="SQL-Inject"><a href="#SQL-Inject" class="headerlink" title="SQL-Inject"></a>SQL-Inject</h1><h2 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h2><p>0X01.注入点判断  </p>
+<pre><code>步骤：
+1 任意选择一个userid，点击查询。用burp抓取数据包，并发送
+  至Repeater
+2 在id后添加and 1=1和and 1=2看页面回显，在Response中拉
+  到burp底部userid表单提交后显示结果的位置
+3 发现and 1=1和and 1=2的返回结果不同，这说明sql语句被执  
+  行了，这里存在sql注入，且没有字符过滤
+01/02
+</code></pre><p>0X02.字段数判断</p>
+<pre><code>步骤：
+1 下面通过oder by子句来判断表的字段数
+2 设置一个适当的值，利用“二分法”进行判断
+3 经过判断后知道字段数为2
+03/04
+</code></pre><p>0X03.查询当前数据库中的表名</p>
+<pre><code>步骤：
+1) 查表语句：code01
+</code></pre><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*code01*/</span>  </span><br><span class="line"><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,group_concat(<span class="built_in">table_name</span>) <span class="keyword">from</span> 	information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1 union select：该查询要求两个表的字段数相同，这里查询了两个字段，与已知的字段数一致，因此可以看到两个显示位<br>2 词义解释：<br>   tables：数据库中所有的表<br>   table_name: 数据库的表名<br>   table_schema：所有数据库名<br>   information_schema：表示所有的库、表、列信息</p>
+</blockquote>
+<p>05<br>0X04.查询users表中的字段</p>
+<pre><code>步骤：
+1 通过上一步查看表名我们知道了了当前数据库中包含的表有哪
+  些，并发现了users这个敏感数据表
+2 接着来查询users表中的字段，查字段语句：code02
+</code></pre><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*code02*/</span>  </span><br><span class="line"><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,group_concat(<span class="built_in">column_name</span>) <span class="keyword">from</span> 	information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> <span class="built_in">table_name</span> = <span class="string">'users'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1 词义解释：<br>   columns：数据库中所有的列<br>   column_name: 数据库的列名  </p>
+</blockquote>
+<p>0X05.查询users表中字段的值</p>
+<pre><code>步骤：
+1 在知道了users表中有哪些字段后，我们进一步来注出这些字段
+  的值
+2 对应得查询语句：code03
+</code></pre><pre><code>/*code03*/  
+first way:
+union select 1,username from users
+union select 1,password from users
+second way:
+union select 1,concat_ws(&#39;:&#39;,username,password) from users
+</code></pre><blockquote>
+<p>concat_wa函数</p>
+</blockquote>
 
     </div>
 
@@ -372,7 +403,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://mankeepup.github.io/2020/02/08/%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E%E4%B9%A6/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" title="Markdown用法">https://mankeepup.github.io/2020/02/08/工具说明书/Markdown使用手册/</a>
+    <a href="https://mankeepup.github.io/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/" title="Pikachu-Keys">https://mankeepup.github.io/2020/05/15/网络安全/综合靶场练习/Pikachu_Keys/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -382,10 +413,6 @@
 
 
       <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Markdown/" rel="tag"><i class="fa fa-tag"></i> Markdown</a>
-          </div>
 
         
   <div class="post-widgets">
@@ -397,11 +424,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/02/09/%E5%8D%9A%E5%AE%A2%E7%AE%80%E4%BB%8B/" rel="next" title="ManKeepUP-BLOG始末">
-      ManKeepUP-BLOG始末 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/12/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="网络安全学习笔记">
+      <i class="fa fa-chevron-left"></i> 网络安全学习笔记
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -462,7 +489,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown使用手册"><span class="nav-number">1.</span> <span class="nav-text">Markdown使用手册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown样式"><span class="nav-number">1.1.</span> <span class="nav-text">Markdown样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码块设置"><span class="nav-number">1.2.</span> <span class="nav-text">代码块设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图"><span class="nav-number">1.3.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用Mermaid画图"><span class="nav-number">1.3.1.</span> <span class="nav-text">用Mermaid画图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片"><span class="nav-number">1.3.2.</span> <span class="nav-text">插入图片</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-Inject"><span class="nav-number">1.</span> <span class="nav-text">SQL-Inject</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数字型注入"><span class="nav-number">1.1.</span> <span class="nav-text">数字型注入</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -478,7 +505,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -522,7 +549,7 @@
           <span class="exturl" data-url="aHR0cHM6Ly9iZXN0enVvLmNuLw==" title="https:&#x2F;&#x2F;bestzuo.cn&#x2F;">bestzuo</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZy8=" title="https:&#x2F;&#x2F;theme-next.org&#x2F;">NexT</span>
+          <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLXRoZW1lLW5leHQubmV0bGlmeS5hcHAv" title="https:&#x2F;&#x2F;hexo-theme-next.netlify.app&#x2F;">NexT</span>
         </li>
         <li class="links-of-blogroll-item">
           <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb2Z1emhhbi5jb20v" title="https:&#x2F;&#x2F;www.liaofuzhan.com&#x2F;">Leaface</span>
@@ -827,12 +854,12 @@ if(canvas.getContext){
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">68k</span>
+    <span title="站点总字数">40k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:02</span>
+    <span title="站点阅读时长">36 分钟</span>
 </div><div class="translate-style">
 繁/简：<a id="translateLink" href="javascript:translatePage();" rel="external nofollow noreferrer">繁体
 </a>
