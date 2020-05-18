@@ -498,52 +498,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="SQL-Inject"><a href="#SQL-Inject" class="headerlink" title="SQL-Inject"></a>SQL-Inject</h1><h2 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h2><p>0X01.注入点判断  </p>
-<pre><code>步骤：
-1 任意选择一个userid，点击查询。用burp抓取数据包，并发送
-  至Repeater
-2 在id后添加and 1=1和and 1=2看页面回显，在Response中拉
-  到burp底部userid表单提交后显示结果的位置
-3 发现and 1=1和and 1=2的返回结果不同，这说明sql语句被执  
-  行了，这里存在sql注入，且没有字符过滤
-01/02
-</code></pre><p>0X02.字段数判断</p>
-<pre><code>步骤：
-1 下面通过oder by子句来判断表的字段数
-2 设置一个适当的值，利用“二分法”进行判断
-3 经过判断后知道字段数为2
-03/04
-</code></pre><p>0X03.查询当前数据库中的表名</p>
-<pre><code>步骤：
-1) 查表语句：code01
-</code></pre><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*code01*/</span>  </span><br><span class="line"><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,group_concat(<span class="built_in">table_name</span>) <span class="keyword">from</span> 	information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>1 union select：该查询要求两个表的字段数相同，这里查询了两个字段，与已知的字段数一致，因此可以看到两个显示位<br>2 词义解释：<br>   tables：数据库中所有的表<br>   table_name: 数据库的表名<br>   table_schema：所有数据库名<br>   information_schema：表示所有的库、表、列信息</p>
-</blockquote>
-<p>05<br>0X04.查询users表中的字段</p>
-<pre><code>步骤：
-1 通过上一步查看表名我们知道了了当前数据库中包含的表有哪
-  些，并发现了users这个敏感数据表
-2 接着来查询users表中的字段，查字段语句：code02
-</code></pre><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*code02*/</span>  </span><br><span class="line"><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,group_concat(<span class="built_in">column_name</span>) <span class="keyword">from</span> 	information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> <span class="built_in">table_name</span> = <span class="string">'users'</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>1 词义解释：<br>   columns：数据库中所有的列<br>   column_name: 数据库的列名  </p>
-</blockquote>
-<p>0X05.查询users表中字段的值</p>
-<pre><code>步骤：
-1 在知道了users表中有哪些字段后，我们进一步来注出这些字段
-  的值
-2 对应得查询语句：code03
-</code></pre><pre><code>/*code03*/  
-first way:
-union select 1,username from users
-union select 1,password from users
-second way:
-union select 1,concat_ws(&#39;:&#39;,username,password) from users
-</code></pre><blockquote>
-<p>concat_wa函数</p>
-</blockquote>
-
+          <p>Pikachu Range Keys<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/15/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BB%BC%E5%90%88%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/Pikachu_Keys/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -704,14 +667,14 @@ union select 1,concat_ws(&#39;:&#39;,username,password) from users
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -1163,14 +1126,14 @@ union select 1,concat_ws(&#39;:&#39;,username,password) from users
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
+              <span>419</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -1182,7 +1145,7 @@ union select 1,concat_ws(&#39;:&#39;,username,password) from users
     <div class="post-body" itemprop="articleBody">
 
       
-          Here's something encrypted, password is required to continue reading.
+          <p>关于博客的一切…</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/02/09/%E5%8D%9A%E5%AE%A2%E7%AE%80%E4%BB%8B/#more" rel="contents">
@@ -1630,12 +1593,12 @@ if(canvas.getContext){
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">39k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">36 分钟</span>
+    <span title="站点阅读时长">35 分钟</span>
 </div>
 
 <div class="BbeiAn-info">
